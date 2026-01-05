@@ -3,7 +3,12 @@ import tailwindcss from '@tailwindcss/vite'
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
-  modules: ['shadcn-nuxt', '@nuxt/icon', '@nuxtjs/color-mode'],
+  modules: [
+    'shadcn-nuxt',
+    '@nuxt/icon',
+    '@nuxtjs/color-mode',
+    '@nuxtjs/i18n'
+  ],
   css: ['~/assets/css/tailwind.css'],
   vite: {
     plugins: [
@@ -27,5 +32,12 @@ export default defineNuxtConfig({
   icon: {
     mode: 'css',
     cssLayer: 'base'
+  },
+  i18n: {
+    locales: [
+      { code: 'en', language: 'en-US', file: 'en.json'},
+      { code: 'pl', language: 'pl-PL', file: 'pl.json' }
+    ],
+    defaultLocale: 'en',
   }
 })
