@@ -3,7 +3,7 @@ import tailwindcss from '@tailwindcss/vite'
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
-  modules: ['shadcn-nuxt'],
+  modules: ['shadcn-nuxt', '@nuxt/icon'],
   css: ['~/assets/css/tailwind.css'],
   vite: {
     plugins: [
@@ -23,5 +23,9 @@ export default defineNuxtConfig({
      * @default "@/components/ui"
      */
     componentDir: '@/components/ui'
+  },
+  icon: {
+    mode: 'css',
+    cssLayer: 'base'
   }
 })
