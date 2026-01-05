@@ -7,7 +7,8 @@ export default defineNuxtConfig({
     'shadcn-nuxt',
     '@nuxt/icon',
     '@nuxtjs/color-mode',
-    '@nuxtjs/i18n'
+    '@nuxtjs/i18n',
+    '@nuxt/eslint'
   ],
   css: ['~/assets/css/tailwind.css'],
   vite: {
@@ -39,5 +40,10 @@ export default defineNuxtConfig({
       { code: 'pl', language: 'pl-PL', file: 'pl.json' }
     ],
     defaultLocale: 'en',
+  },
+  eslint: {
+    config: {
+      stylistic: true
+    },
   }
 })
