@@ -5,7 +5,7 @@ export default withNuxt(
   {
     ignores: [
       '**/components/ui',
-      '**/lib'
+      '**/lib',
     ],
-  }
+  },
 )
