@@ -4,7 +4,6 @@ export default defineNuxtConfig({
   modules: [
     'shadcn-nuxt',
     '@nuxt/icon',
-    '@nuxtjs/color-mode',
     '@nuxtjs/i18n',
     '@nuxt/eslint',
   ],
