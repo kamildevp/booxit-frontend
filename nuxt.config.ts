@@ -22,10 +22,10 @@ export default defineNuxtConfig({
   },
   i18n: {
     locales: [
-      { code: 'en', language: 'en-US', file: 'en.json' },
-      { code: 'pl', language: 'pl-PL', file: 'pl.json' },
+      { code: 'gb', name: 'English', language: 'en-GB', file: 'en.json' },
+      { code: 'pl', name: 'Polski', language: 'pl-PL', file: 'pl.json' },
     ],
-    defaultLocale: 'en',
+    defaultLocale: 'pl',
   },
   icon: {
     mode: 'css',
