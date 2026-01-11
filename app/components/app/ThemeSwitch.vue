@@ -1,52 +1,53 @@
 <template>
-  <div>
-    <UiButton
-      v-if="!isUnknown"
-      variant="ghost"
-      size="icon"
-      class="hover:bg-transparent dark:hover:bg-transparent"
-      @click="switchTheme"
-    >
-      <Icon
-        class="text-black dark:text-white hover:text-primary dark:hover:text-primary"
-        :name="iconName"
-        size="30"
-      />
-    </UiButton>
+  <div v-if="!isUnknown">
+    <div class="flex flex-row border rounded-md overflow-hidden">
+      <UiButton
+        v-for="themeBtn in themeBtns"
+        :key="themeBtn.name"
+        variant="default"
+        :class="[
+          'rounded-none w-12',
+          themeBtn.value === isDark ? '' : 'bg-transparent text-foreground hover:bg-accent',
+        ]"
+        size="icon-sm"
+        @click="emit('change', themeBtn.name)"
+      >
+        <Icon
+          :name="themeBtn.icon"
+          size="20"
+        />
+      </UiButton>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { usePreferredDark } from '@vueuse/core'
-
-const isPreferredDark = usePreferredDark()
-const icons = {
-  light: 'ic:baseline-light-mode',
-  dark: 'ic:baseline-dark-mode',
+export type ThemeSwitchProps = {
+  isDark: boolean
+  isUnknown: boolean
 }
 
-const themeCookie = useCookie<'light' | 'dark' | 'auto'>('theme', {
-  default: () => 'auto',
-  expires: new Date(new Date().setFullYear(new Date().getFullYear() + 10)),
-})
-
-onMounted(() => {
-  if (themeCookie.value == 'auto') {
-    themeCookie.value = isPreferredDark.value ? 'dark' : 'light'
-  }
-})
-
-const isDark = computed(() => themeCookie.value === 'dark')
-const isUnknown = computed(() => themeCookie.value === 'auto')
-const iconName = computed(() => isDark.value ? icons.light : icons.dark)
-
-function switchTheme() {
-  themeCookie.value = themeCookie.value === 'dark' ? 'light' : 'dark'
+export type ThemeSwitchEmits = {
+  change: [value: Theme]
 }
 
-useHead({
-  htmlAttrs: {
-    class: { dark: isDark },
+defineProps<ThemeSwitchProps>()
+const emit = defineEmits<ThemeSwitchEmits>()
+
+const themeBtns: {
+  name: Theme
+  value: boolean
+  icon: string
+}[] = [
+  {
+    name: 'light',
+    value: false,
+    icon: 'ic:baseline-light-mode',
   },
-})
+  {
+    name: 'dark',
+    value: true,
+    icon: 'ic:baseline-dark-mode',
+  },
+]
 </script>
