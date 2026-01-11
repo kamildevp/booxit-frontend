@@ -1,3 +1,24 @@
 {
-    
+    "components": {
+        "app": {
+            "Header": {
+                "close_btn": {
+                    "text": "Close"
+                }
+            }
+        },
+        "header": {
+            "Preferences": {
+                "lang_switch": {
+                    "label": "Language:"
+                },
+                "theme_switch": {
+                    "label": "Theme:"
+                }
+            },
+            "LoginButton": {
+                "text": "Log in"
+            }
+        }
+    }
 }
