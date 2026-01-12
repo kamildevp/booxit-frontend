@@ -6,6 +6,7 @@ export default defineNuxtConfig({
     '@nuxt/icon',
     '@nuxtjs/i18n',
     '@nuxt/eslint',
+    'nuxt-zod-i18n',
   ],
   devtools: { enabled: true },
   css: ['~/assets/css/tailwind.css'],

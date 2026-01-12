@@ -20,5 +20,118 @@
                 "text": "Zaloguj się"
             }
         }
+    },
+    "zodI18n": {
+        "errors": {
+            "custom": "Nieprawidłowe dane wejściowe",
+            "invalid_arguments": "Nieprawidłowe argumenty funkcji",
+            "invalid_date": "Nieprawidłowa data",
+            "invalid_enum_value": "Nieprawidłowa wartość enum. Oczekiwano {options}, otrzymano '{received}'",
+            "invalid_intersection_types": "Nie można połączyć wyników przecięcia",
+            "invalid_literal": "Nieprawidłowa wartość literalna, oczekiwano {expected}",
+            "invalid_return_type": "Nieprawidłowy typ zwracany przez funkcję",
+            "invalid_string": {
+                "cuid": "Nieprawidłowy {validation}",
+                "datetime": "Nieprawidłowy {validation}",
+                "email": "Nieprawidłowy {validation}",
+                "endsWith": "Nieprawidłowe dane wejściowe: musi kończyć się na \"{endsWith}\"",
+                "regex": "Nieprawidłowe",
+                "startsWith": "Nieprawidłowe dane wejściowe: musi zaczynać się od \"{startsWith}\"",
+                "url": "Nieprawidłowy {validation}",
+                "uuid": "Nieprawidłowy {validation}"
+            },
+            "invalid_type": "Oczekiwano {expected}, otrzymano {received}",
+            "invalid_type_received_undefined": "Wymagane",
+            "invalid_union": "Nieprawidłowe dane wejściowe",
+            "invalid_union_discriminator": "Nieprawidłowa wartość dyskryminatora. Oczekiwano {options}",
+            "not_finite": "Liczba musi być skończona",
+            "not_multiple_of": "Liczba musi być wielokrotnością {multipleOf}",
+            "required": "Wymagane",
+            "too_big": {
+                "array": {
+                    "exact": "Tablica musi zawierać dokładnie {maximum} element(ów)",
+                    "inclusive": "Tablica może zawierać co najwyżej {maximum} element(ów)",
+                    "not_inclusive": "Tablica musi zawierać mniej niż {maximum} element(ów)"
+                },
+                "date": {
+                    "exact": "Data musi być dokładnie {maximum}",
+                    "inclusive": "Data musi być mniejsza lub równa {maximum}",
+                    "not_inclusive": "Data musi być mniejsza niż {maximum}"
+                },
+                "number": {
+                    "exact": "Liczba musi być dokładnie {maximum}",
+                    "inclusive": "Liczba musi być mniejsza lub równa {maximum}",
+                    "not_inclusive": "Liczba musi być mniejsza niż {maximum}"
+                },
+                "set": {
+                    "exact": "Nieprawidłowe dane wejściowe",
+                    "inclusive": "Nieprawidłowe dane wejściowe",
+                    "not_inclusive": "Nieprawidłowe dane wejściowe"
+                },
+                "string": {
+                    "exact": "Musi zawierać dokładnie {maximum} znak(ów)",
+                    "inclusive": "Może zawierać co najwyżej {maximum} znak(ów)",
+                    "not_inclusive": "Musi zawierać mniej niż {maximum} znak(ów)"
+                }
+            },
+            "too_small": {
+                "array": {
+                    "exact": "Tablica musi zawierać dokładnie {minimum} element(ów)",
+                    "inclusive": "Tablica musi zawierać co najmniej {minimum} element(ów)",
+                    "not_inclusive": "Tablica musi zawierać więcej niż {minimum} element(ów)"
+                },
+                "date": {
+                    "exact": "Data musi być dokładnie {minimum}",
+                    "inclusive": "Data musi być większa lub równa {minimum}",
+                    "not_inclusive": "Data musi być większa niż {minimum}"
+                },
+                "number": {
+                    "exact": "Liczba musi być dokładnie {minimum}",
+                    "inclusive": "Liczba musi być większa lub równa {minimum}",
+                    "not_inclusive": "Liczba musi być większa niż {minimum}"
+                },
+                "set": {
+                    "exact": "Nieprawidłowe dane wejściowe",
+                    "inclusive": "Nieprawidłowe dane wejściowe",
+                    "not_inclusive": "Nieprawidłowe dane wejściowe"
+                },
+                "string": {
+                    "exact": "Musi zawierać dokładnie {minimum} znak(ów)",
+                    "inclusive": "Musi zawierać co najmniej {minimum} znak(ów)",
+                    "not_inclusive": "Musi zawierać więcej niż {minimum} znak(ów)"
+                }
+            },
+            "unrecognized_keys": "Nierozpoznane klucze w obiekcie: {keys}"
+        },
+        "types": {
+            "array": "tablica",
+            "bigint": "bigint",
+            "boolean": "boolean",
+            "date": "data",
+            "float": "float",
+            "function": "funkcja",
+            "integer": "liczba całkowita",
+            "map": "mapa",
+            "nan": "nan",
+            "never": "never",
+            "null": "null",
+            "number": "liczba",
+            "object": "obiekt",
+            "promise": "promise",
+            "set": "zbiór",
+            "string": "ciąg znaków",
+            "symbol": "symbol",
+            "undefined": "undefined",
+            "unknown": "unknown",
+            "void": "void"
+        },
+        "validations": {
+            "cuid": "cuid",
+            "datetime": "datetime",
+            "email": "email",
+            "regex": "regex",
+            "url": "url",
+            "uuid": "uuid"
+        }
     }
 }
