@@ -21,6 +21,40 @@
             }
         }
     },
+    "pages": {
+        "login": {
+            "card": {
+                "title": "Zaloguj się",
+                "button": {
+                    "login": {
+                        "text": "Zaloguj się"
+                    },
+                    "google_login": {
+                        "text": "Zaloguj się przez Google"
+                    },
+                    "sign_up": {
+                        "text": "Załóż konto"
+                    },
+                    "forgot_password": {
+                        "text": "Zapomniałeś hasła?"
+                    }
+                },
+                "buttons_separator": {
+                    "text": "LUB"
+                }
+            },
+            "form": {
+                "field": {
+                    "email": {
+                        "label": "Email"
+                    },
+                    "password": {
+                        "label": "Hasło"
+                    }
+                }
+            }
+        }
+    },
     "zodI18n": {
         "errors": {
             "custom": "Nieprawidłowe dane wejściowe",

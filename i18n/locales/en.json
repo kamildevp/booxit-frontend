@@ -20,5 +20,39 @@
                 "text": "Log in"
             }
         }
+    },
+    "pages": {
+        "login": {
+            "card": {
+                "title": "Log In",
+                "button": {
+                    "login": {
+                        "text": "Log in"
+                    },
+                    "google_login": {
+                        "text": "Log in with Google"
+                    },
+                    "sign_up": {
+                        "text": "Sign Up"
+                    },
+                    "forgot_password": {
+                        "text": "Forgot password?"
+                    }
+                },
+                "buttons_separator": {
+                    "text": "OR"
+                }
+            },
+            "form": {
+                "field": {
+                    "email": {
+                        "label": "Email"
+                    },
+                    "password": {
+                        "label": "Password"
+                    }
+                }
+            }
+        }
     }
 }
