@@ -1,0 +1,36 @@
+<template>
+  <VeeField
+    v-slot="{ field, errors }"
+    :name="name"
+  >
+    <UiField :data-invalid="!!errors.length">
+      <UiFieldLabel :for="field.name">
+        {{ $t(`${translationPath}.label`) }}
+      </UiFieldLabel>
+      <UiInput
+        :id="field.name"
+        :type="type"
+        :placeholder="placeholder"
+        v-bind="field"
+        :aria-invalid="!!errors.length"
+        :default-value="defaultValue"
+      />
+      <UiFieldError
+        v-if="errors.length"
+        :errors="errors"
+      />
+    </UiField>
+  </VeeField>
+</template>
+
+<script setup lang="ts">
+import type { BaseFieldProps } from '../types'
+import { Field as VeeField } from 'vee-validate'
+
+export interface Props extends BaseFieldProps<string> {
+  type?: string
+  placeholder?: string
+}
+
+defineProps<Props>()
+</script>
