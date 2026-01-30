@@ -36,6 +36,30 @@ export const setAuthCookies = <R extends EventHandlerRequest = EventHandlerReque
   )
 }
 
+export const resetAuthCookies = <R extends EventHandlerRequest = EventHandlerRequest> (event: H3Event<R>): void => {
+  setCookie(
+    event,
+    accessTokenCookieName,
+    '',
+    {
+      httpOnly: true,
+      sameSite: 'lax',
+      expires: new Date(),
+    },
+  )
+
+  setCookie(
+    event,
+    refreshTokenCookieName,
+    '',
+    {
+      httpOnly: true,
+      sameSite: 'lax',
+      expires: new Date(),
+    },
+  )
+}
+
 export const getAuthState = <R extends EventHandlerRequest = EventHandlerRequest> (event: H3Event<R>): AuthState => {
   const accessToken = getCookie(event, accessTokenCookieName)
   const refreshToken = getCookie(event, refreshTokenCookieName)
