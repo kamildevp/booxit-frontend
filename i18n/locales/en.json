@@ -18,6 +18,9 @@
             },
             "LoginButton": {
                 "text": "Log in"
+            },
+            "LogoutButton": {
+                "text": "Logout"
             }
         }
     },

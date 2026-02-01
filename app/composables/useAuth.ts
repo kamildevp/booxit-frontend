@@ -30,9 +30,19 @@ export default function () {
     return true
   }
 
+  async function logout(logoutOtherSessions: boolean): Promise<void> {
+    authState.value = await $fetch('/api/auth/logout', {
+      method: 'POST',
+      body: {
+        logout_other_sessions: logoutOtherSessions,
+      },
+    })
+  }
+
   return {
     authenticated,
     login,
     refreshAuthState,
+    logout,
   }
 }

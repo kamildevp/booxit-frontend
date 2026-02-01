@@ -18,6 +18,9 @@
             },
             "LoginButton": {
                 "text": "Zaloguj się"
+            },
+            "LogoutButton": {
+                "text": "Wyloguj się"
             }
         }
     },
