@@ -51,6 +51,9 @@
                     "password": {
                         "label": "Password"
                     }
+                },
+                "error": {
+                    "invalid_credentials": "Invalid email or password"
                 }
             }
         }

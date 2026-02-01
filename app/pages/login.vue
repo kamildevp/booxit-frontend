@@ -46,6 +46,7 @@
                   type="password"
                   v-bind="field"
                   :aria-invalid="!!errors.length"
+                  autocomplete="new-password"
                 />
                 <UiFieldError
                   v-if="errors.length"
@@ -58,11 +59,13 @@
       </UiCardContent>
       <UiCardFooter class="flex flex-col gap-2">
         <UiButton
-          class="w-full"
+          class="w-full items-center"
           type="submit"
           form="login-form"
         >
+          <UiSpinner v-if="pending" />
           <Icon
+            v-else
             size="20"
             name="ic:baseline-log-in"
           />
@@ -91,7 +94,12 @@
 
 <script setup lang="ts">
 import { useForm, Field as VeeField } from 'vee-validate'
+import { toast } from 'vue-sonner'
 import { z } from 'zod'
+
+const { t } = useI18n()
+const { login } = useAuth()
+const localePath = useLocalePath()
 
 const formSchema = z.object({
   email: z.email(),
@@ -101,8 +109,20 @@ const formSchema = z.object({
 const { handleSubmit, validate } = useForm({
   validationSchema: formSchema,
 })
-const onSubmit = handleSubmit((data) => {
+
+const pending = ref(false)
+
+const onSubmit = handleSubmit(async (data) => {
   validate()
-  console.log(data)
+  pending.value = true
+  const result = await login(data.email, data.password)
+  pending.value = false
+
+  if (result) {
+    navigateTo(localePath('/'))
+  }
+  else {
+    toast.error(t('pages.login.form.error.invalid_credentials'))
+  }
 })
 </script>
