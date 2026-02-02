@@ -3,7 +3,7 @@ export default defineNuxtPlugin((nuxtApp) => {
   const localePath = useLocalePath()
   const cookieHeader = useRequestHeader('Cookie')
 
-  const api = $fetch.create({
+  const authFetch = $fetch.create({
     onRequest({ options }) {
       if (cookieHeader) {
         options.headers.set('Cookie', cookieHeader)
@@ -19,7 +19,7 @@ export default defineNuxtPlugin((nuxtApp) => {
 
   return {
     provide: {
-      api,
+      authFetch,
     },
   }
 })
