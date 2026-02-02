@@ -4,6 +4,7 @@ import { FetchError } from 'ofetch'
 export default function () {
   const authState = useState<AuthState | undefined>('authState', () => undefined)
   const authenticated = computed(() => authState.value?.status === 'authenticated')
+  const userData = computed(() => authState.value?.userData)
   const requestFetch = useRequestFetch()
 
   async function refreshAuthState(): Promise<void> {
@@ -40,6 +41,7 @@ export default function () {
   }
 
   return {
+    userData,
     authenticated,
     login,
     refreshAuthState,
