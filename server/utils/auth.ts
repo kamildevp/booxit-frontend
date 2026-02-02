@@ -1,7 +1,7 @@
 import { jwtDecode } from 'jwt-decode'
 import type { EventHandlerRequest, H3Event } from 'h3'
 import { accessTokenCookieName, refreshTokenCookieName } from '../constants'
-import type { AuthState } from '~~/types/auth'
+import type { AuthStatus } from '~~/types/auth'
 
 export const getJwtExpiryDate = (token: string): Date | undefined => {
   const decoded = jwtDecode(token)
@@ -60,17 +60,13 @@ export const resetAuthCookies = <R extends EventHandlerRequest = EventHandlerReq
   )
 }
 
-export const getAuthState = <R extends EventHandlerRequest = EventHandlerRequest> (event: H3Event<R>): AuthState => {
+export const getAuthStatus = <R extends EventHandlerRequest = EventHandlerRequest> (event: H3Event<R>): AuthStatus => {
   const accessToken = getCookie(event, accessTokenCookieName)
   const refreshToken = getCookie(event, refreshTokenCookieName)
 
   if (accessToken) {
-    return {
-      status: 'authenticated',
-    }
+    return 'authenticated'
   }
 
-  return {
-    status: refreshToken ? 'expired' : 'unauthenticated',
-  }
+  return refreshToken ? 'expired' : 'unauthenticated'
 }
