@@ -16,7 +16,7 @@
               size="16"
               :name="selectedEntry[iconKey]"
             />
-            {{ selectedEntry ? selectedEntry[labelKey] : '' }}
+            {{ selectedEntry && ($te(selectedEntry[labelKey]) ? $t(selectedEntry[labelKey]) : selectedEntry[labelKey]) }}
           </div>
         </UiSelectValue>
       </UiSelectTrigger>
@@ -33,7 +33,7 @@
               size="16"
               :name="entry[iconKey]"
             />
-            {{ entry[labelKey] }}
+            {{ $te(entry[labelKey]) ? $t(entry[labelKey]) : entry[labelKey] }}
           </div>
         </UiSelectItem>
       </UiSelectContent>
