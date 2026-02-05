@@ -60,11 +60,11 @@ export interface Props<
   iconKey?: IconKey
   entries: EntryType[]
   placeholder?: string
-  defaultValue: EntryType[ValueKey]
+  defaultValue?: EntryType[ValueKey]
 }
 
 const props = defineProps<Props<LK, VK, IK, ET>>()
-const defaultEntry = props.entries.find(entry => entry[props.valueKey] === props.defaultValue)
+const defaultEntry = props.entries.find(entry => props.defaultValue != undefined && entry[props.valueKey] === props.defaultValue)
 const selectedValue = ref(defaultEntry ? defaultEntry[props.valueKey] : undefined)
 const selectedEntry = computed(() => props.entries.find(entry => entry[props.valueKey] === selectedValue.value))
 
