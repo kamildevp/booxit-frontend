@@ -46,16 +46,14 @@
     LK extends string,
     VK extends string,
     IK extends string,
-    VT extends string|number,
-    ET extends Entry<LK, VK, IK, VT>
+    ET extends Entry<LK, VK, IK>
   "
 >
 export interface Props<
   LabelKey extends string,
   ValueKey extends string,
   IconKey extends string,
-  ValueType extends string | number,
-  EntryType extends Entry<LabelKey, ValueKey, IconKey, ValueType>,
+  EntryType extends Entry<LabelKey, ValueKey, IconKey>,
 > {
   labelKey: LabelKey
   valueKey: ValueKey
@@ -65,7 +63,7 @@ export interface Props<
   defaultValue: EntryType[ValueKey]
 }
 
-const props = defineProps<Props<LK, VK, IK, VT, ET>>()
+const props = defineProps<Props<LK, VK, IK, ET>>()
 const defaultEntry = props.entries.find(entry => entry[props.valueKey] === props.defaultValue)
 const selectedValue = ref(defaultEntry ? defaultEntry[props.valueKey] : undefined)
 const selectedEntry = computed(() => props.entries.find(entry => entry[props.valueKey] === selectedValue.value))
@@ -85,7 +83,7 @@ export type Entry<
   LabelKey extends string,
   ValueKey extends string,
   IconKey extends string,
-  ValueType extends string | number,
+  ValueType extends string | number = string | number,
 > = {
   [K in LabelKey]: string
 } & {
