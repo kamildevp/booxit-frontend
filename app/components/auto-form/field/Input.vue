@@ -3,7 +3,10 @@
     v-slot="{ field, errors }"
     :name="name"
   >
-    <UiField :data-invalid="!!errors.length">
+    <UiField
+      :data-invalid="!!errors.length"
+      class="gap-2"
+    >
       <UiFieldLabel :for="field.name">
         {{ $t(`${translationPath}.label`) }}
       </UiFieldLabel>
@@ -15,6 +18,9 @@
         :aria-invalid="!!errors.length"
         :default-value="defaultValue"
       />
+      <UiFieldDescription>
+        {{ $te(`${translationPath}.description`) ? $t(`${translationPath}.description`) : '' }}
+      </UiFieldDescription>
       <UiFieldError
         v-if="errors.length"
         :errors="errors"
