@@ -53,7 +53,7 @@ export interface Props<
   LabelKey extends string,
   ValueKey extends string,
   IconKey extends string,
-  EntryType extends Entry<LabelKey, ValueKey, IconKey>,
+  EntryType extends Entry<LabelKey, ValueKey, IconKey> = Entry<LabelKey, ValueKey, IconKey>,
 > {
   labelKey: LabelKey
   valueKey: ValueKey
@@ -89,11 +89,12 @@ export type Entry<
   ValueKey extends string,
   IconKey extends string,
   ValueType extends string | number = string | number,
-> = {
-  [K in LabelKey]: string
-} & {
-  [K in ValueKey]: ValueType
-} & {
-  [K in IconKey]?: string
-}
+> = Record<string, unknown>
+  & {
+    [K in LabelKey]: string
+  } & {
+    [K in ValueKey]: ValueType
+  } & {
+    [K in IconKey]?: string
+  }
 </script>
