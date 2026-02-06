@@ -18,4 +18,10 @@ export type InnerType<T extends ZodType> = T extends ZodDefault<infer U extends 
 export type ObjectSchemaShape<T extends ZodObject> = {
   [P in keyof T['shape']]: Shape<T['shape'][P]>
 }
-export type DeepPartialObject<T> = T extends object ? { [K in keyof T]?: DeepPartialObject<T[K]> } : T
+
+export type DeepPartialObject<T>
+  = T extends (infer U)[]
+    ? U[]
+    : T extends object
+      ? { [K in keyof T]?: DeepPartialObject<T[K]> }
+      : T

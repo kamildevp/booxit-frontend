@@ -15,7 +15,7 @@ export function resolveObjectSchemaFieldShapes<S extends { [K in keyof S]: ZodTy
   }), {}) as ObjectSchemaShape<T>
 }
 
-export function deepObjectOverwrite<T extends Record<string, unknown>>(baseObj: T, overwriteObj: DeepPartialObject<T>) {
+export function deepObjectOverwrite<T extends Record<string, unknown>>(baseObj: T, overwriteObj: DeepPartialObject<T>): T {
   const result = { ...baseObj }
 
   for (const key in overwriteObj) {
@@ -26,7 +26,7 @@ export function deepObjectOverwrite<T extends Record<string, unknown>>(baseObj: 
       continue
     }
 
-    result[key] = (typeof baseValue === 'object'
+    result[key] = (typeof baseValue === 'object' && overwriteValue !== null && !Array.isArray(baseValue)
       ? deepObjectOverwrite(baseValue as Record<string, unknown>, overwriteValue as Record<string, unknown>)
       : overwriteValue) as T[typeof key]
   }
