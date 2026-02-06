@@ -22,6 +22,7 @@
         <AutoForm
           id="login-form"
           :schema="formSchema"
+          translation-path="pages.login.form.field"
           @submit="onSubmit"
         >
           <template #password>

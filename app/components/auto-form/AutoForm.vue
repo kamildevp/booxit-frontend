@@ -22,12 +22,13 @@ import { deepObjectOverwrite, resolveObjectSchemaFieldShapes } from './utils'
 
 interface Props {
   schema: T
+  translationPath: string
   fieldsOverride?: DeepPartialObject<ObjectSchemaShape<T>>
 }
 
 const props = defineProps<Props>()
 const fields = computed(() => {
-  const baseShapes = resolveObjectSchemaFieldShapes(props.schema, 'pages.login.form.field')
+  const baseShapes = resolveObjectSchemaFieldShapes(props.schema, props.translationPath)
   const shapes = props.fieldsOverride ? deepObjectOverwrite(baseShapes, props.fieldsOverride) : baseShapes
   return Object.values(shapes).filter(el => !!el)
 })
