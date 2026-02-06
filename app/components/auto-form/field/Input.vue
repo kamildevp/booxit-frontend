@@ -17,6 +17,8 @@
         v-bind="field"
         :aria-invalid="!!errors.length"
         :default-value="defaultValue"
+        :autocomplete="autocomplete"
+        :spellcheck="spellcheck"
       />
       <UiFieldDescription>
         {{ $te(`${translationPath}.description`) ? $t(`${translationPath}.description`) : '' }}
@@ -36,6 +38,8 @@ import { Field as VeeField } from 'vee-validate'
 export interface Props extends BaseFieldProps<string> {
   type?: string
   placeholder?: string
+  autocomplete?: string
+  spellcheck?: string
 }
 
 defineProps<Props>()
