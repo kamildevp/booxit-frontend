@@ -2,16 +2,16 @@ import type { ZodObject, ZodType } from 'zod'
 import type { DeepPartialObject, ObjectSchemaShape, Shape, ShapeTypes } from './types'
 import { shapeResolvers } from './defaults'
 
-export function resolveFieldShape<T extends ZodType>(name: string, zodType: T, translationPath: string): Shape<T> {
-  return (zodType.type in shapeResolvers ? shapeResolvers[zodType.type as keyof ShapeTypes](name, zodType, translationPath) : undefined) as Shape<T>
+export function resolveFieldShape<T extends ZodType>(name: string, zodType: T, translationPath: string, translateEnums?: boolean): Shape<T> {
+  return (zodType.type in shapeResolvers ? shapeResolvers[zodType.type as keyof ShapeTypes](name, zodType, translationPath, translateEnums) : undefined) as Shape<T>
 }
 
-export function resolveObjectSchemaFieldShapes<S extends { [K in keyof S]: ZodType }, T extends ZodObject<S>>(schema: T, translationPath: string): ObjectSchemaShape<T> {
+export function resolveObjectSchemaFieldShapes<S extends { [K in keyof S]: ZodType }, T extends ZodObject<S>>(schema: T, translationPath: string, translateEnums?: boolean): ObjectSchemaShape<T> {
   const fieldNames = Object.keys(schema.shape) as (keyof S & string)[]
 
   return fieldNames.reduce((acc, curr) => ({
     ...acc,
-    [curr]: resolveFieldShape(curr, schema.shape[curr], translationPath),
+    [curr]: resolveFieldShape(curr, schema.shape[curr], translationPath, translateEnums),
   }), {}) as ObjectSchemaShape<T>
 }
 

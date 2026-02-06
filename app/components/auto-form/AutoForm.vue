@@ -24,11 +24,12 @@ interface Props {
   schema: T
   translationPath: string
   fieldsOverride?: DeepPartialObject<ObjectSchemaShape<T>>
+  translateEnums?: boolean
 }
 
 const props = defineProps<Props>()
 const fields = computed(() => {
-  const baseShapes = resolveObjectSchemaFieldShapes(props.schema, props.translationPath)
+  const baseShapes = resolveObjectSchemaFieldShapes(props.schema, props.translationPath, props.translateEnums)
   const shapes = props.fieldsOverride ? deepObjectOverwrite(baseShapes, props.fieldsOverride) : baseShapes
   return Object.values(shapes).filter(el => !!el)
 })

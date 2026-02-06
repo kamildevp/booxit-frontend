@@ -11,7 +11,7 @@ export interface FieldShape<T extends BaseFieldProps = BaseFieldProps> {
   component: Component
   props: T
 }
-export type ShapeResolver = <T extends ZodType>(name: string, type: T, translationPath: string) => FieldShape | undefined
+export type ShapeResolver = <T extends ZodType>(name: string, type: T, translationPath: string, translateEnums?: boolean) => FieldShape | undefined
 export type ShapeTypes = typeof shapeResolvers
 export type Shape<T extends ZodType> = InnerType<T>['type'] extends keyof ShapeTypes ? ReturnType<ShapeTypes[InnerType<T>['type']]> : undefined
 export type InnerType<T extends ZodType> = T extends ZodDefault<infer U extends ZodType> ? U : T
