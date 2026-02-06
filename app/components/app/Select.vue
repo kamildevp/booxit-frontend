@@ -1,10 +1,10 @@
 <template>
   <div>
     <UiSelect
-      :default-value="defaultValue"
+      :model-value="model"
       @update:model-value="(value) => onValueChanged(value as ET[VK])"
     >
-      <UiSelectTrigger>
+      <UiSelectTrigger :aria-invalid="ariaInvalid">
         <UiSelectValue :placeholder="placeholder">
           <div
             v-if="selectedEntry"
@@ -61,9 +61,13 @@ export interface Props<
   entries: EntryType[]
   placeholder?: string
   defaultValue?: EntryType[ValueKey]
+  ariaInvalid?: boolean
 }
 
 const props = defineProps<Props<LK, VK, IK, ET>>()
+const model = defineModel<ET[VK]>()
+model.value = props.defaultValue
+
 const defaultEntry = props.entries.find(entry => props.defaultValue != undefined && entry[props.valueKey] === props.defaultValue)
 const selectedValue = ref(defaultEntry ? defaultEntry[props.valueKey] : undefined)
 const selectedEntry = computed(() => props.entries.find(entry => entry[props.valueKey] === selectedValue.value))
@@ -73,6 +77,7 @@ const emit = defineEmits<{
 }>()
 
 function onValueChanged(newValue: ET[VK]) {
+  model.value = newValue
   selectedValue.value = newValue
   emit('valueChanged', newValue)
 }
