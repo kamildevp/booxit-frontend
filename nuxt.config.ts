@@ -12,6 +12,9 @@ export default defineNuxtConfig({
   css: ['~/assets/css/tailwind.css'],
   runtimeConfig: {
     baseApiUrl: '',
+    public: {
+      verificationHandler: '',
+    },
   },
   compatibilityDate: '2025-07-15',
   vite: {
