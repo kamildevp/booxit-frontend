@@ -3,7 +3,7 @@
     <div>
       <AppHeader />
     </div>
-    <div class="flex-1 relative">
+    <div class="flex-1 relative overflow-auto">
       <slot />
       <UiToaster
         position="top-center"
