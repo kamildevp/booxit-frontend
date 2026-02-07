@@ -30,7 +30,10 @@
               v-slot="{ field, errors }"
               name="password"
             >
-              <UiField :data-invalid="!!errors.length">
+              <UiField
+                :data-invalid="!!errors.length"
+                class="gap-1"
+              >
                 <div class="flex items-center">
                   <UiFieldLabel for="password">
                     {{ $t('pages.login.form.field.password.label') }}

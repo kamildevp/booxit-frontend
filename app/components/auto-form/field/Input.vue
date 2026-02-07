@@ -5,7 +5,7 @@
   >
     <UiField
       :data-invalid="!!errors.length"
-      class="gap-2"
+      class="gap-1"
     >
       <UiFieldLabel :for="field.name">
         {{ $t(`${translationPath}.label`) }}
