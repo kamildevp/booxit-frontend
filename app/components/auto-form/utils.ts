@@ -1,6 +1,7 @@
 import type { ZodObject, ZodType } from 'zod'
 import type { DeepPartialObject, ObjectSchemaShape, Shape, ShapeTypes } from './types'
 import { shapeResolvers } from './defaults'
+import isPlainObject from 'lodash.isplainobject'
 
 export function resolveFieldShape<T extends ZodType>(name: string, zodType: T, translationPath: string, translateEnums?: boolean): Shape<T> {
   return (zodType.type in shapeResolvers ? shapeResolvers[zodType.type as keyof ShapeTypes](name, zodType, translationPath, translateEnums) : undefined) as Shape<T>
@@ -22,11 +23,11 @@ export function deepObjectOverwrite<T extends Record<string, unknown>>(baseObj: 
     const baseValue = result[key]
     const overwriteValue = overwriteObj[key]
 
-    if (overwriteValue === undefined || (typeof baseValue === 'object' && typeof overwriteValue !== 'object')) {
+    if (overwriteValue === undefined) {
       continue
     }
 
-    result[key] = (typeof baseValue === 'object' && overwriteValue !== null && !Array.isArray(baseValue)
+    result[key] = (isPlainObject(baseValue)
       ? deepObjectOverwrite(baseValue as Record<string, unknown>, overwriteValue as Record<string, unknown>)
       : overwriteValue) as T[typeof key]
   }
