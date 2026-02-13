@@ -5,6 +5,9 @@
                 "close_btn": {
                     "text": "Zamknij"
                 }
+            },
+            "OptionsSeparator": {
+                "text": "LUB"
             }
         },
         "header": {
@@ -21,6 +24,60 @@
             },
             "LogoutButton": {
                 "text": "Wyloguj się"
+            }
+        },
+        "signup": {
+            "Form": {
+                "button": {
+                    "create_account": {
+                        "text": "Załóż konto"
+                    }
+                },
+                "form": {
+                    "field": {
+                        "name": {
+                            "label": "Imię i Nazwisko / Pseudonim",
+                            "description": "Publiczna nazwa konta (6 - 50 characters)."
+                        },
+                        "username": {
+                            "label": "Nazwa użytkownika",
+                            "description": "Musi zawierać co najmniej jedną literę, może zawierać liczby i podkreślenia \"_\" (4 - 20 characters)."
+                        },
+                        "email": {
+                            "label": "Email"
+                        },
+                        "password": {
+                            "label": "Password",
+                            "description": "Musi zawierać co najmniej jedną literę oraz liczbę, może zawierać znaki specjalne: !#$%?&* (8 - 20 characters)."
+                        },
+                        "password_confirmation": {
+                            "label": "Potwierdź hasło"
+                        },
+                        "language_preference": {
+                            "label": "Preferowany język",
+                            "description": "Używany w wiadomościach email oraz powiadomieniach."
+                        }
+                    },
+                    "refine_error": {
+                        "password_confirmation": {
+                            "match": "Hasła nie są takie same" 
+                        }
+                    },
+                    "server_error": {
+                        "User with provided username already exists": "Nazwa użytkownika jest zajęta",
+                        "User with provided email already exists": "Email jest zajęty"
+                    }
+                }
+            },
+            "FormHeader": {
+                "title": "Załóż konto"
+            },
+            "Methods": {
+                "button": {
+                    "google_login": {
+                        "text": "Kontynuuj z Google"
+                    }
+                }
             }
         }
     },
