@@ -78,6 +78,15 @@
                         "text": "Continue with Google"
                     }
                 }
+            },
+            "Notice": {
+                "title": "Your Account was created successfully!",
+                "content": "We've sent a verification link to your email address. Please activate your account to complete the registration process.",
+                "footer": {
+                    "home_button": {
+                        "text": "Go to home page"
+                    }
+                }
             }
         }
     },

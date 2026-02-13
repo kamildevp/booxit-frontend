@@ -78,6 +78,15 @@
                         "text": "Kontynuuj z Google"
                     }
                 }
+            },
+            "Notice": {
+                "title": "Twoje konto zostało pomyślnie utworzone!",
+                "content": "Wysłaliśmy link weryfikacyjny na Twój adres e-mail. Aktywuj swoje konto, aby dokończyć proces rejestracji.",
+                "footer": {
+                    "home_button": {
+                        "text": "Przejdź do strony głównej"
+                    }
+                }
             }
         }
     },
