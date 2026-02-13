@@ -1,6 +1,8 @@
 import type { EventHandlerRequest, H3Event, HTTPMethod } from 'h3'
 import type { QueryObject } from 'ufo'
 import { accessTokenCookieName } from '../constants'
+import type { FetchError } from 'ofetch'
+import validationErrorResponseSchema from '../schemas/response/validationErrorResponse'
 
 export const useAPI = async function<R extends EventHandlerRequest = EventHandlerRequest> (
   event: H3Event<R>,
@@ -20,5 +22,13 @@ export const useAPI = async function<R extends EventHandlerRequest = EventHandle
     body,
     headers,
     query,
+  }).catch((error: FetchError) => {
+    const data = error.status == 422 ? validationErrorResponseSchema.parse(error.data).data.errors : error.data
+
+    throw createError({
+      statusMessage: error.statusMessage,
+      status: error.status,
+      data: data,
+    })
   })
 }
