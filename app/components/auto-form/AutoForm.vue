@@ -17,13 +17,13 @@
 
 <script setup lang="ts" generic="S extends ZodRawShape, T extends ZodObject<S>">
 import type { ZodObject, ZodRawShape } from 'zod'
-import type { DeepPartialObject, ObjectSchemaShape } from './types'
+import type { FieldsOverride } from './types'
 import { deepObjectOverwrite, resolveObjectSchemaFieldShapes } from './utils'
 
 interface Props {
   schema: T
   translationPath: string
-  fieldsOverride?: DeepPartialObject<ObjectSchemaShape<T>>
+  fieldsOverride?: FieldsOverride<T>
   translateEnums?: boolean
 }
 

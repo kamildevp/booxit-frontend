@@ -25,3 +25,5 @@ export type DeepPartialObject<T>
     : T extends object
       ? { [K in keyof T]?: DeepPartialObject<T[K]> }
       : T
+
+export type FieldsOverride<T extends ZodObject> = DeepPartialObject<ObjectSchemaShape<T>>
