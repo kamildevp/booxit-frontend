@@ -1,34 +1,36 @@
 <template>
-  <div class="w-full max-w-3xl p-4">
-    <UiCard>
-      <UiCardHeader>
-        <UiCardTitle>
-          <div class="flex flex-row items-center gap-2 text-2xl justify-center flex-wrap">
-            <Icon
-              :name="icon.name"
-              :class="icon.class"
-              size="42"
-            />
-            <div class="text-center">
-              <slot name="title" />
+  <div class="h-full flex flex-row justify-center items-center">
+    <div class="w-full max-w-3xl p-4">
+      <UiCard>
+        <UiCardHeader>
+          <UiCardTitle>
+            <div class="flex flex-row items-center gap-2 text-2xl justify-center flex-wrap">
+              <Icon
+                :name="icon.name"
+                :class="icon.class"
+                size="42"
+              />
+              <div class="text-center">
+                <slot name="title" />
+              </div>
             </div>
+          </UiCardTitle>
+          <UiCardDescription>
+            <slot name="description" />
+          </UiCardDescription>
+        </UiCardHeader>
+        <UiCardContent class="flex flex-row justify-center items-center">
+          <div class="whitespace-pre-line">
+            <slot name="content" />
           </div>
-        </UiCardTitle>
-        <UiCardDescription>
-          <slot name="description" />
-        </UiCardDescription>
-      </UiCardHeader>
-      <UiCardContent class="flex flex-row justify-center items-center">
-        <div class="whitespace-pre-line">
-          <slot name="content" />
-        </div>
-      </UiCardContent>
-      <UiCardFooter class="flex flex-row justify-center items-center">
-        <div>
-          <slot name="footer" />
-        </div>
-      </UiCardFooter>
-    </UiCard>
+        </UiCardContent>
+        <UiCardFooter class="flex flex-row justify-center items-center">
+          <div>
+            <slot name="footer" />
+          </div>
+        </UiCardFooter>
+      </UiCard>
+    </div>
   </div>
 </template>
 
