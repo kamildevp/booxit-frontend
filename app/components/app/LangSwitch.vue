@@ -14,9 +14,14 @@
 <script setup lang="ts">
 const { locale, locales, setLocale } = useI18n()
 
+const icons: Record<typeof locale.value, string> = {
+  pl: 'flag-pl-4x3',
+  en: 'flag-gb-4x3',
+}
+
 const entries = computed(() => locales.value.map(locale => ({
   name: locale.name ?? '',
   value: locale.code,
-  icon: `flag-${locale.code}-4x3`,
+  icon: icons[locale.code],
 })))
 </script>
