@@ -1,5 +1,5 @@
 <template>
-  <AppNoticeCard variant="info">
+  <AppNoticeCard variant="success">
     <template #title>
       {{ $t('components.signup.Notice.title') }}
     </template>
