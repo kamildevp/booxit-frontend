@@ -10,12 +10,16 @@
           {{ $t('pages.login.card.title') }}
         </UiCardTitle>
         <UiCardAction>
-          <UiButton
-            variant="outline"
-            class="rounded-full text-primary hover:text-primary"
+          <NuxtLinkLocale
+            to="/signup"
           >
-            {{ $t('pages.login.card.button.sign_up.text') }}
-          </UiButton>
+            <UiButton
+              variant="outline"
+              class="rounded-full text-primary hover:text-primary"
+            >
+              {{ $t('pages.login.card.button.sign_up.text') }}
+            </UiButton>
+          </NuxtLinkLocale>
         </UiCardAction>
       </UiCardHeader>
       <UiCardContent>
