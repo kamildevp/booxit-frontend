@@ -9,5 +9,9 @@
 </template>
 
 <script setup lang="ts">
+definePageMeta({
+  unauthorizedOnly: true,
+})
+
 const signupResult = ref(false)
 </script>

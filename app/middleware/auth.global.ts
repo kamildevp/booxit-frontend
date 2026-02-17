@@ -4,7 +4,7 @@ export default defineNuxtRouteMiddleware(async (to) => {
 
   await callOnce(refreshAuthState)
 
-  if (to.path === localePath('/login') && authenticated.value) {
+  if (to.meta.unauthorizedOnly === true && authenticated.value) {
     return navigateTo(localePath('/'))
   }
 

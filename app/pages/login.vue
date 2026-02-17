@@ -40,6 +40,10 @@ import { useForm } from 'vee-validate'
 import { toast } from 'vue-sonner'
 import { z } from 'zod'
 
+definePageMeta({
+  unauthorizedOnly: true,
+})
+
 const { t } = useI18n()
 const { login } = useAuth()
 const localePath = useLocalePath()
