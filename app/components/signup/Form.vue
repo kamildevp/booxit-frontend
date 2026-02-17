@@ -7,7 +7,7 @@
       <div class="flex flex-col gap-2 max-w-md">
         <SignupFormHeader />
         <SignupMethods />
-        <OptionsSeparator />
+        <AppOptionsSeparator />
         <div>
           <AutoForm
             id="signup-form"
@@ -37,7 +37,6 @@ import { useForm } from 'vee-validate'
 import { z } from 'zod'
 import languagePreference, { languages } from '~~/server/schemas/languagePreference'
 import createValidationErrorsSchema from '~/schemas/validation/users/create'
-import OptionsSeparator from '~/components/app/OptionsSeparator.vue'
 import type { FieldsOverride } from '~/components/auto-form/types'
 
 const { t, locale } = useI18n()
