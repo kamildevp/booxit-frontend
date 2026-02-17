@@ -107,7 +107,29 @@
                 "content": "We've sent a verification link to your email address. Please activate your account to complete the registration process.",
                 "footer": {
                     "home_button": {
-                        "text": "Go to home page"
+                        "text": "Home page"
+                    }
+                }
+            }
+        },
+        "verify": {
+            "FailedNotice": {
+                "title": "Verification Failed",
+                "content": "Verification link is invalid or expired.",
+                "footer": {
+                    "home_button": {
+                        "text": "Home page"
+                    }
+                }
+            },
+            "account_activation": {
+                "SuccessNotice": {
+                    "title": "Account activated successfully!",
+                    "content": "You can now log in to your account.",
+                    "footer": {
+                        "login_button": {
+                            "text": "Login page"
+                        }
                     }
                 }
             }

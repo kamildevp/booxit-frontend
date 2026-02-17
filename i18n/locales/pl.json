@@ -107,7 +107,29 @@
                 "content": "Wysłaliśmy link weryfikacyjny na Twój adres e-mail. Aktywuj swoje konto, aby dokończyć proces rejestracji.",
                 "footer": {
                     "home_button": {
-                        "text": "Przejdź do strony głównej"
+                        "text": "Strona główna"
+                    }
+                }
+            }
+        },
+        "verify": {
+            "FailedNotice": {
+                "title": "Weryfikacja się nie powiodła",
+                "content": "Link weryfikacyjny jest nieprawidłowy lub stracił ważność.",
+                "footer": {
+                    "home_button": {
+                        "text": "Strona główna"
+                    }
+                }
+            },
+            "account_activation": {
+                "SuccessNotice": {
+                    "title": "Twoje konto zostało aktywowane!",
+                    "content": "Możesz się teraz zalogować.",
+                    "footer": {
+                        "login_button": {
+                            "text": "Strona logowania"
+                        }
                     }
                 }
             }
