@@ -26,6 +26,29 @@
                 "text": "Logout"
             }
         },
+        "login": {
+            "FormHeader": {
+                "title": "Log In",
+                "button": {
+                    "sign_up": {
+                        "text": "Sign Up"
+                    }
+                }
+            },
+            "PasswordField": {
+                "label": "Password",
+                "forgot_password": {
+                    "text": "Forgot password?"
+                }
+            },
+            "Methods": {
+                "button": {
+                    "google_login": {
+                        "text": "Log in with Google"
+                    }
+                }
+            }
+        },
         "signup": {
             "Form": {
                 "button": {
@@ -93,32 +116,16 @@
     "pages": {
         "login": {
             "card": {
-                "title": "Log In",
                 "button": {
                     "login": {
                         "text": "Log in"
-                    },
-                    "google_login": {
-                        "text": "Log in with Google"
-                    },
-                    "sign_up": {
-                        "text": "Sign Up"
-                    },
-                    "forgot_password": {
-                        "text": "Forgot password?"
                     }
-                },
-                "buttons_separator": {
-                    "text": "OR"
                 }
             },
             "form": {
                 "field": {
                     "email": {
                         "label": "Email"
-                    },
-                    "password": {
-                        "label": "Password"
                     }
                 },
                 "error": {
