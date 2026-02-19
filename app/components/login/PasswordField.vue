@@ -12,7 +12,7 @@
           {{ $t('components.login.PasswordField.label') }}
         </UiFieldLabel>
         <NuxtLinkLocale
-          to="/"
+          to="/password-reset"
           class="ml-auto inline-block text-sm underline text-primary"
         >
           {{ $t('components.login.PasswordField.forgot_password.text') }}

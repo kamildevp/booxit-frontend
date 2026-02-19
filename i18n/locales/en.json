@@ -133,6 +133,33 @@
                     }
                 }
             }
+        },
+        "password_reset": {
+            "Form": {
+                "title": "Password Reset",
+                "description": "Provide the email address associated with your account to recover your password.",
+                "form": {
+                    "field": {
+                        "email": {
+                            "label": "Email"
+                        }
+                    }
+                },
+                "button": {
+                    "reset_password": {
+                        "text": "Reset Password"
+                    }
+                }
+            },
+            "Notice": {
+                "title": "Password reset request sent",
+                "content": "We've sent a password reset link to your email address.",
+                "footer": {
+                    "home_button": {
+                        "text": "Home page"
+                    }
+                }
+            }
         }
     },
     "pages": {

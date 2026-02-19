@@ -133,6 +133,33 @@
                     }
                 }
             }
+        },
+        "password_reset": {
+            "Form": {
+                "title": "Resetowanie hasła",
+                "description": "Podaj adres e-mail powiązany z Twoim kontem, aby odzyskać hasło.",
+                "form": {
+                    "field": {
+                        "email": {
+                            "label": "Email"
+                        }
+                    }
+                },
+                "button": {
+                    "reset_password": {
+                        "text": "Zresetuj hasło"
+                    }
+                }
+            },
+            "Notice": {
+                "title": "Wysłano prośbę o zresetowanie hasła",
+                "content": "Wysłaliśmy link do zresetowania hasła na Twój adres e-mail.",
+                "footer": {
+                    "home_button": {
+                        "text": "Strona główna"
+                    }
+                }
+            }
         }
     },
     "pages": {
