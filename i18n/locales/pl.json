@@ -60,18 +60,18 @@
                     "field": {
                         "name": {
                             "label": "Imię i Nazwisko / Pseudonim",
-                            "description": "Publiczna nazwa konta (6 - 50 characters)."
+                            "description": "Publiczna nazwa konta (6 - 50 znaków)."
                         },
                         "username": {
                             "label": "Nazwa użytkownika",
-                            "description": "Musi zawierać co najmniej jedną literę, może zawierać liczby i podkreślenia \"_\" (4 - 20 characters)."
+                            "description": "Musi zawierać co najmniej jedną literę, może zawierać liczby i podkreślenia \"_\" (4 - 20 znaków)."
                         },
                         "email": {
                             "label": "Email"
                         },
                         "password": {
                             "label": "Password",
-                            "description": "Musi zawierać co najmniej jedną literę oraz liczbę, może zawierać znaki specjalne: !#$%?&* (8 - 20 characters)."
+                            "description": "Musi zawierać co najmniej jedną literę oraz liczbę, może zawierać znaki specjalne: !#$%?&* (8 - 20 znaków)."
                         },
                         "password_confirmation": {
                             "label": "Potwierdź hasło"
@@ -126,6 +126,42 @@
                 "SuccessNotice": {
                     "title": "Twoje konto zostało aktywowane!",
                     "content": "Możesz się teraz zalogować.",
+                    "footer": {
+                        "login_button": {
+                            "text": "Strona logowania"
+                        }
+                    }
+                }
+            },
+            "password_reset": {
+                "Form": {
+                    "title": "Resetowanie hasła",
+                    "description": "Utwórz nowe hasło.",
+                    "form": {
+                        "field": {
+                            "password": {
+                                "label": "Password",
+                                "description": "Musi zawierać co najmniej jedną literę oraz liczbę, może zawierać znaki specjalne: !#$%?&* (8 - 20 znaków)."
+                            },
+                            "password_confirmation": {
+                                "label": "Potwierdź hasło"
+                            }
+                        },
+                        "refine_error": {
+                            "password_confirmation": {
+                                "match": "Hasła nie są takie same" 
+                            }
+                        }
+                    },
+                    "button": {
+                        "reset_password": {
+                            "text": "Zresetuj hasło"
+                        }
+                    }
+                },
+                "SuccessNotice": {
+                    "title": "Twoje hasło zostało zmienione",
+                    "content": "Możesz się teraz zalogować używając nowego hasła.",
                     "footer": {
                         "login_button": {
                             "text": "Strona logowania"

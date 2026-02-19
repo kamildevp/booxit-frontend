@@ -132,6 +132,42 @@
                         }
                     }
                 }
+            },
+            "password_reset": {
+                "Form": {
+                    "title": "Password Reset",
+                    "description": "Create new password for your account.",
+                    "form": {
+                        "field": {
+                            "password": {
+                                "label": "Password",
+                                "description": "Must include at least one letter, one number and may contain special characters: !#$%?&* (8 - 20 characters)."
+                            },
+                            "password_confirmation": {
+                                "label": "Confirm Password"
+                            }
+                        },
+                        "refine_error": {
+                            "password_confirmation": {
+                                "match": "Passwords are not the same" 
+                            }
+                        }
+                    },
+                    "button": {
+                        "reset_password": {
+                            "text": "Reset Password"
+                        }
+                    }
+                },
+                "SuccessNotice": {
+                    "title": "Your password was changed successfully",
+                    "content": "You can now log in using new password.",
+                    "footer": {
+                        "login_button": {
+                            "text": "Login page"
+                        }
+                    }
+                }
             }
         },
         "password_reset": {

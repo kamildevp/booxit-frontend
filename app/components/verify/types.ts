@@ -1,4 +1,4 @@
-export type VerificationType = 'account_activation'
+export type VerificationType = 'account_activation' | 'password_reset'
 export type VerificationParameters = {
   id: number
   type: string

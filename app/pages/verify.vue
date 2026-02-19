@@ -12,20 +12,22 @@
 <script setup lang="ts">
 import z from 'zod'
 import AccountActivation from '~/components/verify/account-activation/AccountActivation.vue'
+import PasswordReset from '~/components/verify/password-reset/PasswordReset.vue'
 import type { VerificationType } from '~/components/verify/types'
 
 const route = useRoute()
 
 const typeComponentMap: Record<VerificationType, Component> = {
   account_activation: AccountActivation,
+  password_reset: PasswordReset,
 }
 
 const verificationParametersSchema = z.object({
-  id: z.coerce.number(),
+  id: z.coerce.number().int(),
   type: z.enum(Object.keys(typeComponentMap) as VerificationType[]),
   _hash: z.string().min(1),
   token: z.string().min(1),
-  expires: z.coerce.number(),
+  expires: z.coerce.number().int(),
 })
 
 const result = verificationParametersSchema.safeParse(route.query)
