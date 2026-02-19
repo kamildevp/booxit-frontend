@@ -1,0 +1,12 @@
+services:
+  node:
+    hostname: booxit-frontend-node
+    env_file: .env
+    command: sh -c "npm run build && node .output/server/index.mjs"
+    networks:
+      - proxy
+  
+networks:
+  proxy:
+    name: proxy
+    external: true
