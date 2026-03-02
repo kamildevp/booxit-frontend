@@ -12,6 +12,8 @@ export default defineNuxtConfig({
   css: ['~/assets/css/tailwind.css'],
   runtimeConfig: {
     baseApiUrl: '',
+    googleAuthClientId: '',
+    socialAuthRedirectUri: '',
     public: {
       verificationHandler: '',
     },

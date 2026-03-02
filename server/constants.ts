@@ -1,2 +1,5 @@
 export const accessTokenCookieName = 'access_token'
 export const refreshTokenCookieName = 'refresh_token'
+export const socialAuthProviderCookieName = 'social_auth_provider'
+export const socialAuthStateCookieName = 'social_auth_state'
+export const socialAuthCodeVerifierCookieName = 'social_auth_code_verifier'
