@@ -62,10 +62,6 @@
                             "label": "Imię i Nazwisko / Pseudonim",
                             "description": "Publiczna nazwa konta (6 - 50 znaków)."
                         },
-                        "username": {
-                            "label": "Nazwa użytkownika",
-                            "description": "Musi zawierać co najmniej jedną literę, może zawierać liczby i podkreślenia \"_\" (4 - 20 znaków)."
-                        },
                         "email": {
                             "label": "Email"
                         },
@@ -87,7 +83,6 @@
                         }
                     },
                     "server_error": {
-                        "User with provided username already exists": "Nazwa użytkownika jest zajęta",
                         "User with provided email already exists": "Email jest zajęty"
                     }
                 }

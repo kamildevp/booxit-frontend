@@ -1,10 +1,11 @@
 <template>
-  <div class="flex flex-row">
+  <div class="flex flex-row h-full">
     <div class="hidden lg:flex flex-1">
       <!-- Stock image -->
     </div>
     <div class="flex-1 flex flex-row justify-center p-4">
-      <div class="flex flex-col gap-2 max-w-md">
+      <div class="flex flex-col gap-2 lg:gap-4 max-w-md">
+        <div class="flex-1" />
         <SignupFormHeader />
         <SignupMethods />
         <AppOptionsSeparator />
@@ -27,6 +28,7 @@
             {{ $t('components.signup.Form.button.create_account.text') }}
           </UiButton>
         </div>
+        <div class="flex-1" />
       </div>
     </div>
   </div>
@@ -45,7 +47,6 @@ const { parseValidationErrors } = useFormTools()
 
 const formSchema = z.object({
   name: z.string().min(6).max(50),
-  username: z.string().regex(/^(?=.*\p{L})[\p{L}\d_]{4,20}$/iu),
   email: z.email(),
   language_preference: languagePreference,
   password: z.string().regex(/^(?=.*\p{L})(?=.*\d)[\p{L}\d!@#$%?&*]{8,20}$/iu),

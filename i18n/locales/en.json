@@ -62,10 +62,6 @@
                             "label": "Name",
                             "description": "Public account name (6 - 50 characters)."
                         },
-                        "username": {
-                            "label": "Username",
-                            "description": "Must include at least one letter and may contain numbers or underscores \"_\" (4 - 20 characters)."
-                        },
                         "email": {
                             "label": "Email"
                         },
@@ -87,7 +83,6 @@
                         }
                     },
                     "server_error": {
-                        "User with provided username already exists": "Username is already taken",
                         "User with provided email already exists": "Email is already taken"
                     }
                 }
