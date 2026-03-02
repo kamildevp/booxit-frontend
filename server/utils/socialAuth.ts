@@ -1,9 +1,11 @@
 import type { EventHandlerRequest, H3Event } from 'h3'
 import { socialAuthCodeVerifierCookieName, socialAuthProviderCookieName, socialAuthStateCookieName } from '../constants'
 import type { SocialAuthProvider, SocialAuthState, SocialAuthStateData } from '~~/types/socialAuth'
+import { socialAuthProviders } from '~~/types/socialAuth'
 import pkceChallenge from 'pkce-challenge'
 import { Buffer } from 'buffer'
 import socialAuthState from '../schemas/auth/socialAuthState'
+import z from 'zod'
 
 const providerScope: Record<SocialAuthProvider, string> = {
   google: 'openid email profile',
@@ -117,6 +119,31 @@ export const decodeState = (encoded: string): SocialAuthState => {
   )
 
   return socialAuthState.parse(decoded)
+}
+
+export const resolveSocialAuthTokenExchangeParameters = <R extends EventHandlerRequest = EventHandlerRequest> (event: H3Event<R>, state: string) => {
+  const cookiesParseResult = z.object({
+    state: z.string().min(1),
+    codeVerifier: z.string().min(1),
+    provider: z.enum(socialAuthProviders),
+  }).safeParse({
+    state: getCookie(event, socialAuthStateCookieName),
+    codeVerifier: getCookie(event, socialAuthCodeVerifierCookieName),
+    provider: getCookie(event, socialAuthProviderCookieName),
+  })
+
+  if (!cookiesParseResult.success || cookiesParseResult.data.state != state) {
+    throw createError({
+      statusMessage: 'Unauthorized',
+      status: 401,
+    })
+  }
+
+  return {
+    url: getSocialAuthTokenExchangeEndpoint(cookiesParseResult.data.provider),
+    codeVerifier: cookiesParseResult.data.codeVerifier,
+    state: decodeState(cookiesParseResult.data.state),
+  }
 }
 
 const generateState = (data: SocialAuthStateData) => {
