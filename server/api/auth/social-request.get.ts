@@ -1,10 +1,14 @@
 import socialAuthRequest from '~~/server/schemas/auth/socialAuthRequest'
 
 export default defineEventHandler(async (event) => {
-  const body = await readBody(event)
+  const query = getQuery(event)
   try {
-    const parsedRequest = socialAuthRequest.parse(body)
-    const socialAuthParameters = await generateSocialAuthUrlParameters(event, parsedRequest.provider, parsedRequest.state)
+    const parsedRequestParameters = socialAuthRequest.parse(query)
+    const socialAuthParameters = await generateSocialAuthUrlParameters(
+      event,
+      parsedRequestParameters.provider,
+      parsedRequestParameters.state,
+    )
 
     return socialAuthParameters
   }
