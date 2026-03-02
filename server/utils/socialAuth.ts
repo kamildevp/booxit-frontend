@@ -85,17 +85,23 @@ export const resetSocialAuthCookies = <R extends EventHandlerRequest = EventHand
   )
 }
 
-export const generateSocialAuthUrlParameters = async (provider: SocialAuthProvider, stateData: SocialAuthStateData) => {
+export const generateSocialAuthUrlParameters = async <R extends EventHandlerRequest = EventHandlerRequest> (
+  event: H3Event<R>,
+  provider: SocialAuthProvider,
+  stateData: SocialAuthStateData,
+) => {
   const config = useRuntimeConfig()
   const challenge = await pkceChallenge(128)
   const clientId = config[`${provider}AuthClientId` as const]
+  const state = generateState(stateData)
+  setSocialAuthCookies(event, provider, state, challenge.code_verifier)
 
   return {
     response_type: 'code',
     client_id: clientId,
     scope: providerScope[provider],
     redirect_uri: config.socialAuthRedirectUri,
-    state: generateState(stateData),
+    state,
     code_challenge: challenge.code_challenge,
     code_challenge_method: challenge.code_challenge_method,
   }
