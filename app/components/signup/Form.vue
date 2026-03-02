@@ -42,7 +42,6 @@ import createValidationErrorsSchema from '~/schemas/validation/users/create'
 import type { FieldsOverride } from '~/components/auto-form/types'
 
 const { t, locale } = useI18n()
-const config = useRuntimeConfig()
 const { parseValidationErrors } = useFormTools()
 
 const formSchema = z.object({
@@ -92,10 +91,7 @@ const onSubmit = handleSubmit(async (data) => {
   const { password_confirmation, ...body } = data
   const result = await $fetch('/api/users', {
     method: 'POST',
-    body: {
-      ...body,
-      verification_handler: config.public.verificationHandler,
-    },
+    body,
   }).catch((error) => {
     const errors = parseValidationErrors(error, createValidationErrorsSchema, 'components.signup.Form.form.server_error')
     setErrors(errors)

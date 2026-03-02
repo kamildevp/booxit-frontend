@@ -35,8 +35,6 @@
 import { useForm } from 'vee-validate'
 import { z } from 'zod'
 
-const config = useRuntimeConfig()
-
 const formSchema = z.object({
   email: z.email(),
 })
@@ -55,10 +53,7 @@ const onSubmit = handleSubmit(async (data) => {
   pending.value = true
   await $fetch('/api/users/reset-password-request', {
     method: 'POST',
-    body: {
-      ...data,
-      verification_handler: config.public.verificationHandler,
-    },
+    body: data,
   })
   pending.value = false
   emit('onSuccess')

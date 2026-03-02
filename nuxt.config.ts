@@ -14,9 +14,7 @@ export default defineNuxtConfig({
     baseApiUrl: '',
     googleAuthClientId: '',
     socialAuthRedirectUri: '',
-    public: {
-      verificationHandler: '',
-    },
+    appId: '',
   },
   compatibilityDate: '2025-07-15',
   vite: {
