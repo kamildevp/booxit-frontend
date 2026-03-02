@@ -3,6 +3,7 @@ import accessTokens from '~~/server/schemas/auth/accessTokens'
 import socialAuthLoginParameters from '~~/server/schemas/auth/socialAuthLoginParameters'
 import successResponse from '~~/server/schemas/response/successResponse'
 import { resolveSocialAuthTokenExchangeParameters } from '~~/server/utils/socialAuth'
+import type { AuthStatus } from '~~/types/auth'
 
 export default defineEventHandler(async (event) => {
   const body = await readBody(event)
@@ -16,6 +17,7 @@ export default defineEventHandler(async (event) => {
   })
   const responseSchema = successResponse(accessTokens)
   const responseData = responseSchema.parse(response).data
+  resetSocialAuthCookies(event)
   setAuthCookies(event, responseData.access_token, responseData.refresh_token)
   const userData = await event.$fetch('/api/users/me', {
     headers: {
@@ -24,8 +26,8 @@ export default defineEventHandler(async (event) => {
   })
 
   return {
-    status: 'authenticated',
+    status: 'authenticated' as AuthStatus,
     userData,
-    state: parameters.state,
+    state: parameters.state.data,
   }
 })
