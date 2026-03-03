@@ -46,6 +46,9 @@
                     "google_login": {
                         "text": "Zaloguj się przez Google"
                     }
+                },
+                "error": {
+                    "login_failed": "Logowanie się nie powiodło"
                 }
             }
         },
