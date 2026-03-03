@@ -7,7 +7,7 @@ export default defineEventHandler(async (event) => {
     const socialAuthParameters = await generateSocialAuthUrlParameters(
       event,
       parsedRequestParameters.provider,
-      parsedRequestParameters.state,
+      { redirect_url: parsedRequestParameters.redirect_url },
     )
 
     return socialAuthParameters
