@@ -1,30 +1,15 @@
 <template>
-  <div class="w-full">
-    <UiButton
-      variant="outline"
-      class="w-full"
-      @click="async () => await handleSocialLoginRequest('google')"
-    >
-      <Icon
-        size="16"
-        class=""
-        name="logos:google-icon"
-      />
-      {{ $t('components.login.Methods.button.google_login.text') }}
-    </UiButton>
-  </div>
+  <SocialLoginMethods redirect-path="/" />
 </template>
 
 <script setup lang="ts">
 import { toast } from 'vue-sonner'
 import socialAuthLoginParameters from '~~/server/schemas/auth/socialAuthLoginParameters'
-import type { SocialAuthProvider } from '~~/types/socialAuth'
 
 const route = useRoute()
 const query = route.query
-const { login, getSocialAuthRedirectParameters } = useSocialAuth()
+const { login } = useSocialAuth()
 const { t } = useI18n()
-const localePath = useLocalePath()
 const socialAuthFailed = useState('socialAuthFailed', () => false)
 const redirectTo = ref<string | undefined>(undefined)
 
@@ -34,14 +19,6 @@ await callOnce(async () => {
     await handleSocialLogin(result.data.code, result.data.state)
   }
 })
-
-async function handleSocialLoginRequest(provider: SocialAuthProvider) {
-  const redirectParameters = await getSocialAuthRedirectParameters(provider, localePath('/'))
-  await navigateTo({
-    path: redirectParameters.url,
-    query: redirectParameters.parameters,
-  }, { external: true })
-}
 
 async function handleSocialLogin(code: string, state: string) {
   const loginResult = await login(code, state).catch(() => false as const)
@@ -56,7 +33,7 @@ async function handleSocialLogin(code: string, state: string) {
 onMounted(() => {
   if (socialAuthFailed.value) {
     socialAuthFailed.value = false
-    toast.error(t('components.login.Methods.error.login_failed'))
+    toast.error(t('components.social_login.SocialLogin.error.login_failed'))
   }
 })
 

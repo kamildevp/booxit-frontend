@@ -7,7 +7,7 @@
       <div class="flex flex-col gap-2 lg:gap-4 max-w-md">
         <div class="flex-1" />
         <SignupFormHeader />
-        <SignupMethods />
+        <SocialLoginMethods redirect-path="/" />
         <AppOptionsSeparator />
         <div>
           <AutoForm

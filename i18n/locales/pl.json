@@ -40,13 +40,17 @@
                 "forgot_password": {
                     "text": "Zapomniałeś hasła?"
                 }
-            },
+            }
+        },
+        "social_login": {
             "Methods": {
                 "button": {
                     "google_login": {
-                        "text": "Zaloguj się przez Google"
+                        "text": "Kontynuuj z Google"
                     }
-                },
+                }
+            },
+            "SocialLogin": {
                 "error": {
                     "login_failed": "Logowanie się nie powiodło"
                 }
@@ -92,13 +96,6 @@
             },
             "FormHeader": {
                 "title": "Załóż konto"
-            },
-            "Methods": {
-                "button": {
-                    "google_login": {
-                        "text": "Kontynuuj z Google"
-                    }
-                }
             },
             "Notice": {
                 "title": "Twoje konto zostało pomyślnie utworzone!",

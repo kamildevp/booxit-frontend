@@ -29,7 +29,7 @@
           {{ $t('pages.login.card.button.login.text') }}
         </UiButton>
         <AppOptionsSeparator />
-        <LoginMethods />
+        <SocialLogin />
       </UiCardFooter>
     </UiCard>
   </div>

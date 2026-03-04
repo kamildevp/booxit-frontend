@@ -40,13 +40,17 @@
                 "forgot_password": {
                     "text": "Forgot password?"
                 }
-            },
+            }
+        },
+        "social_login": {
             "Methods": {
                 "button": {
                     "google_login": {
-                        "text": "Log in with Google"
+                        "text": "Continue with Google"
                     }
-                },
+                }
+            },
+            "SocialLogin": {
                 "error": {
                     "login_failed": "Login Failed"
                 }
@@ -92,13 +96,6 @@
             },
             "FormHeader": {
                 "title": "Sign Up"
-            },
-            "Methods": {
-                "button": {
-                    "google_login": {
-                        "text": "Continue with Google"
-                    }
-                }
             },
             "Notice": {
                 "title": "Your Account was created successfully!",
