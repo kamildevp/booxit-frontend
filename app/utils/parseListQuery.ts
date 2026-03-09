@@ -2,7 +2,13 @@ import type { ColumnFiltersState, SortingState } from '@tanstack/vue-table'
 import type { LocationQuery } from 'vue-router'
 import { z, type ZodObject } from 'zod'
 
-export default function parseListQuery(query: LocationQuery, filtersSchema: ZodObject, sortableColumns: string[]) {
+export default function parseListQuery(
+  query: LocationQuery,
+  filtersSchema: ZodObject,
+  sortableColumns: string[],
+  defaultPage: number = 1,
+  defaultPageSize: number = 20,
+) {
   const sortingSchema = z.object({
     order: z.string().min(1),
   }).refine((data) => {
@@ -16,12 +22,20 @@ export default function parseListQuery(query: LocationQuery, filtersSchema: ZodO
     )
   })
 
+  const paginationSchema = z.object({
+    page: z.coerce.number().int().positive().optional(),
+    per_page: z.coerce.number().int().positive().optional(),
+    ...filtersSchema.shape,
+    ...sortingSchema.shape,
+  })
+
   const filtersParsingResult = filtersSchema.safeParse(query)
   const sortingParsingResult = sortingSchema.safeParse(query)
-
-  console.log(filtersParsingResult.error)
+  const paginationParsingResult = paginationSchema.safeParse(query)
 
   return {
+    page: paginationParsingResult.data?.page ?? defaultPage,
+    pageSize: paginationParsingResult.data?.per_page ?? defaultPageSize,
     filtersState: filtersParsingResult.success ? convertRawFiltersToFiltersState(filtersParsingResult.data) : [],
     sortingState: sortingParsingResult.success ? convertRawSortingToSortingState(sortingParsingResult.data.order) : [],
   }
