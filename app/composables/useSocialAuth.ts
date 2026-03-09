@@ -1,6 +1,5 @@
 import type { AuthState } from '~~/types/auth'
 import type { SocialAuthProvider } from '~~/types/socialAuth'
-import { appendResponseHeader } from 'h3'
 
 export default function () {
   const providersUrls: Record<SocialAuthProvider, string> = {
@@ -8,7 +7,6 @@ export default function () {
   }
 
   const authState = useState<AuthState | undefined>('authState', () => undefined)
-  const event = useRequestEvent()
 
   async function getSocialAuthRedirectParameters(provider: SocialAuthProvider, redirectUrl: string) {
     const url = getSocialAuthUrl(provider)
@@ -35,34 +33,24 @@ export default function () {
   }
 
   async function login(code: string, state: string) {
-    const cookieHeader = useRequestHeader('Cookie')
-    const headers = cookieHeader ? { Cookie: cookieHeader } : undefined
-    const res = await $fetch.raw('/api/auth/social-login', {
+    const res = await useNuxtApp().$authFetch('/api/auth/social-login', {
       method: 'POST',
       body: {
         code,
         state,
       },
-      headers,
-    })
+    }).catch(() => undefined)
 
-    if (import.meta.server) {
-      const cookies = res.headers.getSetCookie()
-      for (const cookie of cookies) {
-        appendResponseHeader(event!, 'set-cookie', cookie)
-      }
-    }
-
-    if (!res.ok || !res._data) {
+    if (!res) {
       return false
     }
 
     authState.value = {
-      status: res._data.status,
-      userData: res._data.userData,
+      status: res.status,
+      userData: res.userData,
     }
 
-    return res._data.state
+    return res.state
   }
 
   return {

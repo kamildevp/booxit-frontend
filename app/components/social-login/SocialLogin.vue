@@ -21,7 +21,7 @@ await callOnce(async () => {
 })
 
 async function handleSocialLogin(code: string, state: string) {
-  const loginResult = await login(code, state).catch(() => false as const)
+  const loginResult = await login(code, state)
   if (loginResult) {
     redirectTo.value = loginResult.redirect_url
   }
