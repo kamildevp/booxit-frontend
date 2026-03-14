@@ -1,8 +1,5 @@
-import type { FetchResult } from '#app'
-import type { PaginatorRequest } from '~~/types/api'
+import type { PaginatorRequest, PaginatorResponse } from '~~/types/api'
 import type { ColumnFiltersState, SortingState } from '@tanstack/vue-table'
-
-type DataT = FetchResult<PaginatorRequest, 'get'> | undefined
 
 export default function<R extends PaginatorRequest>(
   path: R,
@@ -23,11 +20,13 @@ export default function<R extends PaginatorRequest>(
     sortingState.value,
   ))
 
-  const { data, pending, error } = useAuthFetch(path, {
+  const { data, pending, error } = useAuthFetch<PaginatorResponse<R>>(path, {
     query,
   })
 
-  const pagesCount = computed(() => (data.value as DataT)?.pages_count)
+  const pagesCount = computed(() => (data.value)?.pages_count)
+  const resultsCount = computed(() => (data.value)?.total)
+  const items = computed(() => (data.value)?.items)
 
   function nextPage() {
     if (pagesCount.value && page.value < pagesCount.value) {
@@ -42,10 +41,11 @@ export default function<R extends PaginatorRequest>(
   }
 
   return {
-    data,
+    items,
     page,
     pageSize,
     pagesCount,
+    resultsCount,
     filtersState,
     sortingState,
     nextPage,
