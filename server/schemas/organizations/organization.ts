@@ -17,4 +17,5 @@ export default z.object({
     longitude: z.number(),
   }),
   tier: z.string(),
+  banner_url: z.url(),
 }).extend(timestampsSchema.shape)
