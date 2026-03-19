@@ -7,6 +7,7 @@ export default defineNuxtConfig({
     '@nuxtjs/i18n',
     '@nuxt/eslint',
     // 'nuxt-zod-i18n',
+    '@nuxt/image',
   ],
   devtools: { enabled: true },
   css: ['~/assets/css/tailwind.css'],
@@ -37,6 +38,17 @@ export default defineNuxtConfig({
   icon: {
     mode: 'css',
     cssLayer: 'base',
+  },
+  image: {
+    format: ['webp'],
+    provider: 'ipx',
+    domains: ['booxit-backend-nginx'],
+    ipx: {
+      maxAge: 86400,
+    },
+    alias: {
+      backend: 'http://booxit-backend-nginx',
+    },
   },
   shadcn: {
     /**
