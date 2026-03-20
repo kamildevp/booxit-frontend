@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full flex flex-col items-center justify-center h-full">
+  <div class="w-full flex flex-col items-center justify-center flex-1">
     <UiCard class="w-full max-w-sm">
       <UiCardHeader>
         <UiCardTitle class="text-2xl">

@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full h-full">
+  <div class="w-full flex-1 flex flex-col">
     <PasswordResetForm
       v-if="!result"
       @on-success="result = true"

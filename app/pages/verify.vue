@@ -1,5 +1,5 @@
 <template>
-  <div class="h-full">
+  <div class="flex-1 flex flex-col">
     <component
       :is="typeComponent"
       v-bind="result.data"

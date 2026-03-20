@@ -1,5 +1,5 @@
 <template>
-  <div class="h-full flex flex-row justify-center items-center">
+  <div class="flex-1 flex flex-row justify-center items-center">
     <div class="w-full max-w-3xl p-4">
       <UiCard>
         <UiCardHeader>

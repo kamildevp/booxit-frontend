@@ -1,5 +1,5 @@
 <template>
-  <div class="h-full">
+  <div class="flex flex-col flex-1">
     <VerifyPasswordResetForm
       v-if="!error && result === undefined"
       v-bind="props"
