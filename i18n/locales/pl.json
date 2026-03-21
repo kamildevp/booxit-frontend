@@ -191,6 +191,16 @@
                     }
                 }
             }
+        },
+        "list": {
+            "Pagination": {
+                "loaded_count_text": "Brak wyników | Wyświetlono {totalLoaded} z {count} wyniku | Wyświetlono {totalLoaded} z {count} wyników",
+                "load_more_button": {
+                    "text": "Pokaż wiecej"
+                },
+                "prev_text": "Poprzednia",
+                "next_text": "Następna"
+            }
         }
     },
     "pages": {

@@ -1,41 +1,34 @@
 <template>
-  <div class="relative">
-    <div class="absolute bottom-4 left-1/2 -translate-x-1/2 bg-popover p-2 rounded-full border shadow-sm w-73">
-      <UiPagination
-        :page="page"
-        :items-per-page="pageSize"
-        :total="total"
-        :sibling-count="0"
-        show-edges
-        class="text-muted-foreground"
-        @update:page="(newPage) => emit('update:page', newPage)"
+  <div class="w-full flex flex-row justify-center p-4">
+    <div class="flex flex-col items-center max-w-80 gap-2">
+      <div>{{ $t('components.list.Pagination.loaded_count_text', { totalLoaded, count: total }) }}</div>
+      <UiProgress
+        v-if="total > 0"
+        :model-value="loadedProgress"
+        class="h-1"
+      />
+      <UiButton
+        v-if="page < pagesCount"
+        variant="outline"
+        class="w-full mt-2 text-primary hover:text-primary border-primary dark:border-primary"
+        @click="emit('update:page', page+1)"
       >
-        <UiPaginationContent v-slot="{ items }">
-          <UiPaginationPrevious>
-            <Icon name="ic:round-arrow-back-ios" />
-          </UiPaginationPrevious>
-          <template
-            v-for="(item, index) in items"
-            :key="index"
-          >
-            <UiPaginationItem
-              v-if="item.type === 'page'"
-              :value="item.value"
-              :is-active="item.value === page"
-            >
-              {{ item.value }}
-            </UiPaginationItem>
-            <UiPaginationEllipsis
-              v-else
-              :key="item.type"
-              :index="index"
-            />
-          </template>
-          <UiPaginationNext>
-            <Icon name="ic:round-arrow-forward-ios" />
-          </UiPaginationNext>
-        </UiPaginationContent>
-      </UiPagination>
+        {{ $t('components.list.Pagination.load_more_button.text') }}
+      </UiButton>
+      <nav class="sr-only">
+        <NuxtLinkLocale
+          v-if="page > 1"
+          :to="{ path, query: { ...query, page: page-1 } }"
+        >
+          {{ $t('components.list.Pagination.prev_text') }}
+        </NuxtLinkLocale>
+        <NuxtLinkLocale
+          v-if="page < pagesCount"
+          :to="{ path, query: { ...query, page: page+1 } }"
+        >
+          {{ $t('components.list.Pagination.next_text') }}
+        </NuxtLinkLocale>
+      </nav>
     </div>
   </div>
 </template>
@@ -44,11 +37,17 @@
 interface Props {
   page: number
   pageSize: number
+  pagesCount: number
   total: number
+  path: string
+  query: Record<string, unknown>
 }
 
-defineProps<Props>()
+const props = defineProps<Props>()
 const emit = defineEmits<{
   (e: 'update:page', page: number): void
 }>()
+
+const totalLoaded = computed(() => Math.min(props.page * props.pageSize, props.total))
+const loadedProgress = computed(() => totalLoaded.value / props.total * 100)
 </script>
