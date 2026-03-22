@@ -1,5 +1,5 @@
 <template>
-  <div class="flex items-center justify-between border-b p-1 flex-wrap">
+  <div class="flex items-center justify-between border-b flex-wrap h-(--header-height)">
     <div class="md:hidden flex-1" />
     <NuxtLinkLocale to="/">
       <AppLogo />
