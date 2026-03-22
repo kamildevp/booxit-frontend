@@ -1,35 +1,33 @@
 <template>
-  <div class="w-full flex flex-row justify-center p-4">
-    <div class="flex flex-col items-center max-w-80 gap-2">
-      <div>{{ $t('components.list.Pagination.loaded_count_text', { totalLoaded, count: total }) }}</div>
-      <UiProgress
-        v-if="total > 0"
-        :model-value="loadedProgress"
-        class="h-1"
-      />
-      <UiButton
-        v-if="page < pagesCount"
-        variant="outline"
-        class="w-full mt-2 text-primary hover:text-primary border-primary dark:border-primary"
-        @click="emit('update:page', page+1)"
+  <div class="flex flex-col items-center max-w-80 gap-2 p-4">
+    <div>{{ $t('components.list.Pagination.loaded_count_text', { totalLoaded, count: total }) }}</div>
+    <UiProgress
+      v-if="total > 0"
+      :model-value="loadedProgress"
+      class="h-1"
+    />
+    <UiButton
+      v-if="page < pagesCount"
+      variant="outline"
+      class="w-full mt-2 text-primary hover:text-primary border-primary dark:border-primary"
+      @click="emit('update:page', page+1)"
+    >
+      {{ $t('components.list.Pagination.load_more_button.text') }}
+    </UiButton>
+    <nav class="sr-only">
+      <NuxtLinkLocale
+        v-if="page > 1"
+        :to="{ path, query: { ...query, page: page-1 } }"
       >
-        {{ $t('components.list.Pagination.load_more_button.text') }}
-      </UiButton>
-      <nav class="sr-only">
-        <NuxtLinkLocale
-          v-if="page > 1"
-          :to="{ path, query: { ...query, page: page-1 } }"
-        >
-          {{ $t('components.list.Pagination.prev_text') }}
-        </NuxtLinkLocale>
-        <NuxtLinkLocale
-          v-if="page < pagesCount"
-          :to="{ path, query: { ...query, page: page+1 } }"
-        >
-          {{ $t('components.list.Pagination.next_text') }}
-        </NuxtLinkLocale>
-      </nav>
-    </div>
+        {{ $t('components.list.Pagination.prev_text') }}
+      </NuxtLinkLocale>
+      <NuxtLinkLocale
+        v-if="page < pagesCount"
+        :to="{ path, query: { ...query, page: page+1 } }"
+      >
+        {{ $t('components.list.Pagination.next_text') }}
+      </NuxtLinkLocale>
+    </nav>
   </div>
 </template>
 
