@@ -1,11 +1,11 @@
-import type { ColumnFiltersState, SortingState } from '@tanstack/vue-table'
+import type { FiltersState, SortingState } from '~~/types/list'
 
 export default function createListQuery(
   page: number,
   pageSize: number,
-  filtersState: ColumnFiltersState,
+  filtersState: FiltersState,
   sortingState: SortingState,
-): Record<string, unknown> {
+): Record<string, string | number | undefined> {
   const rawFilters = convertFiltersStateToRawFilters(filtersState)
   const rawSorting = convertSortingStateToRawSorting(sortingState)
 
@@ -17,8 +17,8 @@ export default function createListQuery(
   }
 }
 
-function convertFiltersStateToRawFilters(filtersState: ColumnFiltersState): Record<string, unknown> {
-  return filtersState.reduce((acc, curr) => ({ ...acc, [curr.id]: curr.value }), {})
+function convertFiltersStateToRawFilters(filtersState: FiltersState): Record<string, unknown> {
+  return filtersState.reduce((acc, curr) => ({ ...acc, [curr.id]: JSON.stringify(curr.value) }), {})
 }
 
 function convertSortingStateToRawSorting(sortingState: SortingState): string | undefined {
