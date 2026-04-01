@@ -7,7 +7,10 @@ export default function<R extends PaginatorRequest>(
   initialPageSize: number = 20,
   initialFiltersState: ColumnFiltersState = [],
   initialSortingState: SortingState = [],
+  autoRefresh: boolean = true,
+  cacheKey: string = '',
 ) {
+  const route = useRoute()
   const page = ref(initialPage)
   const pageSize = ref(initialPageSize)
   const filtersState = ref(initialFiltersState)
@@ -20,8 +23,10 @@ export default function<R extends PaginatorRequest>(
     sortingState.value,
   ))
 
-  const { data, pending, error } = useAuthFetch<PaginatorResponse<R>>(path, {
+  const { data, pending, error, refresh } = useAuthFetch<PaginatorResponse<R>>(path, {
     query,
+    watch: autoRefresh ? undefined : false,
+    key: `${route.path}-${path}-${cacheKey}`,
   })
 
   const pagesCount = computed(() => (data.value)?.pages_count)
@@ -52,5 +57,6 @@ export default function<R extends PaginatorRequest>(
     prevPage,
     pending,
     error,
+    refresh,
   }
 }
