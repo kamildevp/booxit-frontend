@@ -4,7 +4,10 @@
       :model-value="model"
       @update:model-value="(value) => onValueChanged(value as ET[VK])"
     >
-      <UiSelectTrigger :aria-invalid="ariaInvalid">
+      <UiSelectTrigger
+        :aria-invalid="ariaInvalid"
+        :class="['rounded-full', triggerCls]"
+      >
         <UiSelectValue :placeholder="placeholder">
           <div
             v-if="selectedEntry"
@@ -45,15 +48,18 @@
   generic="
     LK extends string,
     VK extends string,
-    IK extends string,
-    ET extends Entry<LK, VK, IK>
+    IK extends string = 'icon',
+    ET extends Entry<LK, VK, IK> = Entry<LK, VK, IK>
   "
 >
+import type { AcceptableValue } from 'reka-ui'
+import type { HTMLAttributes } from 'vue'
+
 export interface Props<
   LabelKey extends string,
   ValueKey extends string,
   IconKey extends string,
-  EntryType extends Entry<LabelKey, ValueKey, IconKey> = Entry<LabelKey, ValueKey, IconKey>,
+  EntryType extends Entry<LabelKey, ValueKey, IconKey>,
 > {
   labelKey: LabelKey
   valueKey: ValueKey
@@ -62,6 +68,7 @@ export interface Props<
   placeholder?: string
   defaultValue?: EntryType[ValueKey]
   ariaInvalid?: boolean
+  triggerCls?: HTMLAttributes['class']
 }
 
 const props = defineProps<Props<LK, VK, IK, ET>>()
@@ -88,13 +95,11 @@ export type Entry<
   LabelKey extends string,
   ValueKey extends string,
   IconKey extends string,
-  ValueType extends string | number = string | number,
-> = Record<string, unknown>
-  & {
-    [K in LabelKey]: string
-  } & {
-    [K in ValueKey]: ValueType
-  } & {
-    [K in IconKey]?: string
-  }
+> = {
+  [K in LabelKey]: string
+} & {
+  [K in ValueKey]: NonNullable<AcceptableValue>
+} & {
+  [K in IconKey]?: string
+}
 </script>

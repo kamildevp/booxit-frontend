@@ -37,8 +37,8 @@
   generic="
     LK extends string,
     VK extends string,
-    IK extends string,
-    ET extends Entry<LK, VK, IK>
+    IK extends string = 'icon',
+    ET extends Entry<LK, VK, IK> = Entry<LK, VK, IK>
   "
 >
 import type { BaseFieldProps } from '../types'
