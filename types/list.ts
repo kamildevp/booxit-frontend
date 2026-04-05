@@ -1,10 +1,10 @@
-export interface ColumnFilter {
+export type ColumnFilter = {
   id: string
   value: unknown
 }
 export type FiltersState = ColumnFilter[]
 
-export interface ColumnSort {
+export type ColumnSort = {
   desc: boolean
   id: string
 }
