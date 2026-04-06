@@ -15,7 +15,7 @@
           :name="button.icon"
           size="20"
         />
-        {{ button.text }}
+        {{ $t(button.text) }}
       </UiButton>
     </div>
   </div>
@@ -49,13 +49,13 @@ const emit = defineEmits<{
 
 const buttons = [
   {
-    text: 'Clear all',
+    text: 'components.list.FiltersContainer.button.clear.text',
     icon: 'ic:round-close',
     variant: 'ghost',
     onClick: () => emit('clear'),
   },
   {
-    text: 'Apply',
+    text: 'components.list.FiltersContainer.button.apply.text',
     icon: 'ic:round-manage-search',
     variant: 'default',
     onClick: () => emit('apply'),
