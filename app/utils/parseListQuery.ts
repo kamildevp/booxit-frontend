@@ -6,7 +6,7 @@ import { z } from 'zod'
 export default function parseListQuery(
   query: LocationQuery,
   filtersSchema?: ZodObject,
-  sortableColumns?: string[],
+  sortableColumns?: SortingState,
   defaultPage: number = 1,
   defaultPageSize: number = 20,
 ) {
@@ -15,13 +15,8 @@ export default function parseListQuery(
         order: z.string().min(1),
       }).refine((data) => {
         const columns = data.order.split(',')
-        return columns.every(column =>
-          column.length > 0
-          && (
-            sortableColumns.includes(column)
-            || sortableColumns.includes(column.substring(1))
-          ),
-        )
+        const allowedColumns = sortableColumns.map(sort => sort.desc ? `-${sort.id}` : `${sort.id}`)
+        return columns.every(column => allowedColumns.includes(column))
       })
     : undefined
 

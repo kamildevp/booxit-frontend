@@ -18,7 +18,7 @@ export default function createListQuery(
 }
 
 function convertFiltersStateToRawFilters(filtersState: FiltersState): Record<string, unknown> {
-  return filtersState.reduce((acc, curr) => ({ ...acc, [curr.id]: JSON.stringify(curr.value) }), {})
+  return filtersState.reduce((acc, curr) => ({ ...acc, [curr.id]: String(curr.value) }), {})
 }
 
 function convertSortingStateToRawSorting(sortingState: SortingState): string | undefined {
