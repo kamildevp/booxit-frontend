@@ -18,7 +18,17 @@ export default function createListQuery(
 }
 
 function convertFiltersStateToRawFilters(filtersState: FiltersState): Record<string, unknown> {
-  return filtersState.reduce((acc, curr) => ({ ...acc, [curr.id]: String(curr.value) }), {})
+  return filtersState.map(
+    item => ({
+      id: item.id,
+      value: Array.isArray(item.value) ? item.value.map(el => String(el)) : String(item.value),
+    }),
+  ).filter(
+    item => item.value.length > 0 && (!Array.isArray(item.value) || item.value.every(el => el.length > 0)),
+  ).reduce((acc, curr) => ({
+    ...acc,
+    [curr.id]: curr.value,
+  }), {})
 }
 
 function convertSortingStateToRawSorting(sortingState: SortingState): string | undefined {
