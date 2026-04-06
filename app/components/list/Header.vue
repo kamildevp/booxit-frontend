@@ -12,7 +12,10 @@
       @apply="emit('apply')"
     >
       <template #default="slotProps">
-        <slot name="filters" v-bind="slotProps" />
+        <slot
+          name="filters"
+          v-bind="slotProps"
+        />
       </template>
     </ListFiltersMobile>
     <ListSorting
