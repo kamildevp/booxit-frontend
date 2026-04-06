@@ -41,8 +41,6 @@ interface Props {
   pageSize: number
   pagesCount: number
   total: number
-  path: string
-  query: Record<string, unknown>
 }
 
 const props = defineProps<Props>()
@@ -50,6 +48,7 @@ const emit = defineEmits<{
   (e: 'update:page', page: number): void
 }>()
 
+const { path, query } = useRoute()
 const totalLoaded = computed(() => Math.min(props.page * props.pageSize, props.total))
 const loadedProgress = computed(() => totalLoaded.value / props.total * 100)
 </script>
