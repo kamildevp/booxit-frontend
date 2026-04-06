@@ -193,6 +193,22 @@
             }
         },
         "list": {
+            "FiltersContainer": {
+                "button": {
+                    "apply": {
+                        "text": "Apply"
+                    },
+                    "clear": {
+                        "text": "Clear all"
+                    }
+                }
+            },
+            "filters": {
+                "Mobile": {
+                    "drawer_trigger_text": "Filters",
+                    "drawer_title": "Filters"
+                }
+            },
             "Pagination": {
                 "loaded_count_text": "No results | Displaying {totalLoaded} of {count} result | Displaying {totalLoaded} of {count} results",
                 "load_more_button": {
@@ -200,6 +216,23 @@
                 },
                 "prev_text": "Previous",
                 "next_text": "Next"
+            },
+            "Results": {
+                "count_text": "No Results | 1 Result | {count} Results"
+            },
+            "sorting": {
+                "Content": {
+                    "select": {
+                        "placeholder": "+ Add Sorting"
+                    }
+                },
+                "Desktop": {
+                    "popover_trigger_text": "Sort"
+                },
+                "Mobile": {
+                    "drawer_trigger_text": "Sort",
+                    "drawer_title": "Sort"
+                }
             }
         }
     },
