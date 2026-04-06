@@ -1,8 +1,12 @@
 <template>
-  <div class="flex flex-col items-center max-w-80 gap-2 p-4">
-    <div>{{ $t('components.list.Pagination.loaded_count_text', { totalLoaded, count: total }) }}</div>
+  <div
+    v-if="total > 0"
+    class="flex flex-col items-center max-w-80 gap-2 p-4"
+  >
+    <div>
+      {{ $t('components.list.Pagination.loaded_count_text', { totalLoaded, count: total }) }}
+    </div>
     <UiProgress
-      v-if="total > 0"
       :model-value="loadedProgress"
       class="h-1"
     />
