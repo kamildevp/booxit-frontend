@@ -1,6 +1,10 @@
 {
     "components": {
         "app": {
+            "BadgeMultiSelect": {
+                "show_less": "Show less",
+                "show_more": "Show more"
+            },
             "Header": {
                 "close_btn": {
                     "text": "Close"
