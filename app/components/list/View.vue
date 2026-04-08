@@ -29,7 +29,7 @@
         <template #default="{ getFiltersUtils }">
           <slot
             name="header"
-            v-bind="{ ...getFiltersUtils<S>() }"
+            v-bind="{ ...getFiltersUtils<S>(), applyFiltersAndSorting }"
           />
         </template>
         <template #filters="{ getFiltersUtils }">
