@@ -1,6 +1,6 @@
 import type { ZodOptional, ZodObject } from 'zod'
-import type errorList from '~/schemas/validation/errorList'
-import validationError from '~/schemas/validation/validationError'
+import type errorList from '~~/schemas/validation/errorList'
+import validationError from '~~/schemas/validation/validationError'
 
 type ErrorList = typeof errorList
 

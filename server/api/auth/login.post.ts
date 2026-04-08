@@ -1,6 +1,6 @@
 import { accessTokenCookieName } from '~~/server/constants'
-import accessTokens from '~~/server/schemas/auth/accessTokens'
-import successResponse from '~~/server/schemas/response/successResponse'
+import accessTokens from '~~/schemas/auth/accessTokens'
+import successResponse from '~~/schemas/response/successResponse'
 import type { AuthState } from '~~/types/auth'
 
 export default defineEventHandler(async (event): Promise<AuthState> => {

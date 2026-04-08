@@ -2,7 +2,7 @@ import type { EventHandlerRequest, H3Event, HTTPMethod } from 'h3'
 import type { QueryObject } from 'ufo'
 import { accessTokenCookieName } from '../constants'
 import type { FetchError } from 'ofetch'
-import validationErrorResponseSchema from '../schemas/response/validationErrorResponse'
+import validationErrorResponseSchema from '~~/schemas/response/validationErrorResponse'
 
 export const useAPI = async function<R extends EventHandlerRequest = EventHandlerRequest> (
   event: H3Event<R>,

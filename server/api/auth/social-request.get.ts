@@ -1,4 +1,4 @@
-import socialAuthRequest from '~~/server/schemas/auth/socialAuthRequest'
+import socialAuthRequest from '~~/schemas/auth/socialAuthRequest'
 
 export default defineEventHandler(async (event) => {
   const query = getQuery(event)

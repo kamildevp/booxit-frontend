@@ -37,8 +37,8 @@
 <script setup lang="ts">
 import { useForm } from 'vee-validate'
 import { z } from 'zod'
-import languagePreference, { languages } from '~~/server/schemas/languagePreference'
-import createValidationErrorsSchema from '~/schemas/validation/users/create'
+import languagePreference, { languages } from '~~/schemas/languagePreference'
+import createValidationErrorsSchema from '~~/schemas/validation/users/create'
 import type { FieldsOverride } from '~/components/auto-form/types'
 
 const { t, locale } = useI18n()

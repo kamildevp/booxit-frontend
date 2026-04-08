@@ -1,5 +1,5 @@
 import type z from 'zod'
-import type userPrivate from '~~/server/schemas/users/userPrivate'
+import type userPrivate from '~~/schemas/users/userPrivate'
 
 export type AuthStatus = 'authenticated' | 'unauthenticated' | 'expired'
 

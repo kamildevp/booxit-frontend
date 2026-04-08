@@ -1,5 +1,5 @@
 import type z from 'zod'
-import type socialAuthStateData from '~~/server/schemas/auth/socialAuthStateData'
+import type socialAuthStateData from '~~/schemas/auth/socialAuthStateData'
 
 export const socialAuthProviders = [
   'google',

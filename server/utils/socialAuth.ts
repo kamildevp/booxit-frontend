@@ -4,7 +4,7 @@ import type { SocialAuthProvider, SocialAuthState, SocialAuthStateData } from '~
 import { socialAuthProviders } from '~~/types/socialAuth'
 import pkceChallenge from 'pkce-challenge'
 import { Buffer } from 'buffer'
-import socialAuthState from '../schemas/auth/socialAuthState'
+import socialAuthState from '~~/schemas/auth/socialAuthState'
 import z from 'zod'
 
 const providerScope: Record<SocialAuthProvider, string> = {

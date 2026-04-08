@@ -4,7 +4,7 @@
 
 <script setup lang="ts">
 import { toast } from 'vue-sonner'
-import socialAuthLoginParameters from '~~/server/schemas/auth/socialAuthLoginParameters'
+import socialAuthLoginParameters from '~~/schemas/auth/socialAuthLoginParameters'
 
 const route = useRoute()
 const query = route.query

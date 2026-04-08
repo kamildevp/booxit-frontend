@@ -1,7 +1,7 @@
 import { accessTokenCookieName } from '~~/server/constants'
-import accessTokens from '~~/server/schemas/auth/accessTokens'
-import socialAuthLoginParameters from '~~/server/schemas/auth/socialAuthLoginParameters'
-import successResponse from '~~/server/schemas/response/successResponse'
+import accessTokens from '~~/schemas/auth/accessTokens'
+import socialAuthLoginParameters from '~~/schemas/auth/socialAuthLoginParameters'
+import successResponse from '~~/schemas/response/successResponse'
 import { resolveSocialAuthTokenExchangeParameters } from '~~/server/utils/socialAuth'
 import type { AuthStatus } from '~~/types/auth'
 

@@ -1,5 +1,5 @@
-import message from '~~/server/schemas/message'
-import successResponse from '~~/server/schemas/response/successResponse'
+import message from '~~/schemas/message'
+import successResponse from '~~/schemas/response/successResponse'
 
 export default defineEventHandler(async (event) => {
   const body = await readBody(event)

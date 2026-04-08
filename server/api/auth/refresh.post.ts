@@ -1,6 +1,6 @@
 import { refreshTokenCookieName } from '~~/server/constants'
-import accessTokens from '~~/server/schemas/auth/accessTokens'
-import successResponse from '~~/server/schemas/response/successResponse'
+import accessTokens from '~~/schemas/auth/accessTokens'
+import successResponse from '~~/schemas/response/successResponse'
 
 export default defineEventHandler(async (event) => {
   const response = await useAPI(event, 'auth/refresh', 'POST', {
