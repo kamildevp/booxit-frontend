@@ -261,6 +261,40 @@
             }
         }
     },
+    "schemas": {
+        "services": {
+            "category": {
+                "entry": {
+                    "Hairdresser": "Fryzjer",
+                    "Barber": "Barber",
+                    "Skin_Care_&_Spa": "Pielęgnacja skóry i Spa",
+                    "Nails": "Paznokcie",
+                    "Brows_&_Lashes": "Brwi i Rzęsy",
+                    "Cosmetic_Treatments": "Zabiegi kosmetyczne",
+                    "Wellness": "Wellness",
+                    "Healthcare": "Opieka zdrowotna",
+                    "Fitness_&_Sports": "Fitness i Sport",
+                    "Sports_Facilities_Rental": "Wynajem obiektów sportowych",
+                    "Accommodation": "Zakwaterowanie",
+                    "Rentals": "Wynajem",
+                    "Travel": "Podróże",
+                    "Restaurants": "Restauracje",
+                    "Catering": "Catering",
+                    "Cleaning": "Sprzątanie",
+                    "Home_Maintenance": "Konserwacja domu",
+                    "Facilities_Rental": "Wynajem obiektów",
+                    "Education": "Edukacja",
+                    "Automotive": "Motoryzacja",
+                    "Finance": "Finanse",
+                    "Legal": "Prawo",
+                    "Business": "Biznes",
+                    "Pet_Care": "Opieka nad zwierzętami",
+                    "Tech_support": "Wsparcie techniczne",
+                    "Other": "Inne"
+                }
+            }
+        }
+    },
     "zodI18n": {
         "errors": {
             "custom": "Nieprawidłowe dane wejściowe",

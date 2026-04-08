@@ -260,5 +260,39 @@
                 }
             }
         }
+    },
+    "schemas": {
+        "services": {
+            "category": {
+                "entry": {
+                    "Hairdresser": "Hairdresser",
+                    "Barber": "Barber",
+                    "Skin_Care_&_Spa": "Skin Care & Spa",
+                    "Nails": "Nails",
+                    "Brows_&_Lashes": "Brows & Lashes",
+                    "Cosmetic_Treatments": "Cosmetic Treatments",
+                    "Wellness": "Wellness",
+                    "Healthcare": "Healthcare",
+                    "Fitness_&_Sports": "Fitness & Sports",
+                    "Sports_Facilities_Rental": "Sports Facilities Rental",
+                    "Accommodation": "Accommodation",
+                    "Rentals": "Rentals",
+                    "Travel": "Travel",
+                    "Restaurants": "Restaurants",
+                    "Catering": "Catering",
+                    "Cleaning": "Cleaning",
+                    "Home_Maintenance": "Home Maintenance",
+                    "Facilities_Rental": "Facilities Rental",
+                    "Education": "Education",
+                    "Automotive": "Automotive",
+                    "Finance": "Finance",
+                    "Legal": "Legal",
+                    "Business": "Business",
+                    "Pet_Care": "Pet Care",
+                    "Tech_support": "Tech support",
+                    "Other": "Other"
+                }
+            }
+        }
     }
 }

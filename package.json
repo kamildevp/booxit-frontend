@@ -41,6 +41,7 @@
   "devDependencies": {
     "@iconify-json/flag": "^1.2.10",
     "@iconify-json/ic": "^1.2.4",
+    "@iconify-json/icon-park-outline": "^1.2.4",
     "@iconify-json/logos": "^1.2.10",
     "@tailwindcss/vite": "^4.1.18",
     "tailwindcss": "^4.1.18",
