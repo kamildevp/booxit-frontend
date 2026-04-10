@@ -2,3 +2,10 @@ services:
   node:
     ports:
       - 3000:3000
+    networks:
+      - backend
+
+networks:
+  backend:
+    name: booxit-backend_web-server-network
+    external: true
