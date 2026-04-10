@@ -1,75 +1,37 @@
-# Nuxt Minimal Starter
+# Booxit Frontend
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+Frontend app for appointment scheduling and management platform built with NuxtJS.
 
-## Setup
+## 🛠 How to Run Locally (Development Mode)
 
-Make sure to install dependencies:
+### ✅ Requirements
 
-```bash
-# npm
-npm install
+- [Docker](https://docs.docker.com/engine/install/) installed on your system
+- Running [Booxit Backend](https://github.com/kamildevp/booxit-backend) in dev mode with following env variables in `env.local`:
+  ```
+  VERIFICATION_HANDLER_MAIN=http://localhost:3000/verify  # configures frontend app as trusted domain (needed for email confirmations)
+  ```
 
-# pnpm
-pnpm install
+### 🔧 Setup Instructions
 
-# yarn
-yarn install
+From the project root directory (where the `docker-compose.yml` file is located):
 
-# bun
-bun install
+1. Create a `.env` file by coping `.env.example`.
+2. Run `docker compose up -d`.
+3. Application will be available at `http://localhost:3000`.
+
+### Google Auth Setup (Optional)
+Requires configured google oauth client with `http://localhost:3000/login` as redirect uri.
+Fill following env variables using your google oauth client credentials:
+
+Backend `.env.local`:
+```
+GOOGLE_AUTH_CLIENT_ID=#your google client id
+GOOGLE_AUTH_CLIENT_SECRET=#your google client secret
+MAIN_GOOGLE_AUTH_HANDLER_REDIRECT_URL=http://localhost:3000/login
 ```
 
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
+Frontend `.env`:
 ```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
+NUXT_GOOGLE_AUTH_CLIENT_ID=#your google client id
 ```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
