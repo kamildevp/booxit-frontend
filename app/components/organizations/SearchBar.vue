@@ -38,15 +38,16 @@
 <script setup lang="ts">
 import { useDebounceFn } from '@vueuse/core'
 import { useFilter } from 'reka-ui'
+import type { FiltersState } from '~~/types/list'
 
 const props = defineProps<{
-  initialSearch?: string
+  filtersState: FiltersState
 }>()
-const { items, filtersState, pagesCount } = useStore(
+const { items, filtersState: searchFiltersState, pagesCount } = useStore(
   '/api/organizations',
   1,
   50,
-  [{ id: 'filters[name]', value: props.initialSearch ?? '' }],
+  [...props.filtersState],
   [],
   true,
   'organization-searchbar',
@@ -56,7 +57,7 @@ const emit = defineEmits<{
 }>()
 
 const { contains } = useFilter({ sensitivity: 'base' })
-const search = ref(props.initialSearch)
+const search = ref(getNameFilterValue())
 const manualSearchPrefix = ref<string | undefined>(undefined)
 const filteredItems = computed(() => {
   const searchVal = search.value
@@ -66,6 +67,11 @@ const filteredItems = computed(() => {
   else {
     return items.value ?? []
   }
+})
+
+watch(() => props.filtersState, () => {
+  search.value = getNameFilterValue()
+  updateSearchFiltersState()
 })
 
 watch(pagesCount, (value) => {
@@ -81,12 +87,22 @@ watch(search, (value) => {
   updateSearch(value)
 })
 
+function getNameFilterValue() {
+  return props.filtersState.find(el => el.id === 'filters[name]')?.value as string | undefined
+}
+
+function updateSearchFiltersState() {
+  const newValue = [...props.filtersState].filter(el => el.id !== 'filters[name]')
+  newValue.push({ id: 'filters[name]', value: search.value })
+  searchFiltersState.value = newValue
+}
+
 const updateSearch = useDebounceFn((value?: string) => {
   if (value !== undefined && manualSearchPrefix.value !== undefined && value.startsWith(manualSearchPrefix.value)) {
     return
   }
   else {
-    filtersState.value = [{ id: 'filters[name]', value: value ?? '' }]
+    updateSearchFiltersState()
   }
 }, 300)
 </script>
