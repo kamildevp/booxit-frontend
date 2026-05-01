@@ -25,7 +25,7 @@
           @input="open = true"
           @blur="onBlur"
           @keydown.esc="open = false"
-          @keydown.enter="emit('apply')"
+          @keydown.enter="apply"
         />
         <UiButton
           v-show="modelValue && modelValue.length > 0"
@@ -73,7 +73,7 @@
     </div>
     <UiButton
       class="rounded-l-none"
-      @click="emit('apply')"
+      @click="apply"
     >
       <Icon
         name="ic:round-search"
@@ -113,5 +113,11 @@ function onBlur(e: FocusEvent) {
 function clear() {
   modelValue.value = undefined
   inputComponentRef.value?.focus()
+  apply()
+}
+
+function apply() {
+  open.value = false
+  emit('apply')
 }
 </script>
