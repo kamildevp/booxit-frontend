@@ -3,6 +3,7 @@
     v-model="search"
     :items="filteredItems"
     :max-results="4"
+    :placeholder="$t('components.organizations.SearchBar.placeholder')"
     @apply="emit('apply', search)"
   >
     <template #item="{ item }">

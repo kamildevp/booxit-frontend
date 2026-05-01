@@ -49,6 +49,11 @@
                 }
             }
         },
+        "organizations": {
+            "SearchBar": {
+                "placeholder": "Search for Businesses..."
+            }
+        },
         "social_login": {
             "Methods": {
                 "button": {
