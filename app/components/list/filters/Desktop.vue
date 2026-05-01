@@ -8,6 +8,7 @@
     <ListFiltersContainer
       size="lg"
       class="flex-1"
+      :active-filters-count="activeFiltersCount"
       @apply="emit('apply')"
       @clear="clearFiltersState"
     >
@@ -23,6 +24,7 @@ import type { FilterKey, FiltersState, FilterValueType } from '~~/types/list'
 
 const { scrollDir } = useScroll()
 const filtersState = defineModel<FiltersState>('filtersState', { required: true })
+const activeFiltersCount = computed(() => filtersState.value.filter(el => !Array.isArray(el.value) || el.value.length > 0).length)
 const emit = defineEmits<{
   (e: 'apply'): void
 }>()

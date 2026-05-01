@@ -14,6 +14,13 @@
             size="24"
           />
           {{ $t('components.list.sorting.Desktop.popover_trigger_text') }}
+          <UiBadge
+            v-show="activeSortingCount > 0"
+            class="ml-2"
+            variant="destructive"
+          >
+            {{ activeSortingCount }}
+          </UiBadge>
         </UiButton>
       </UiPopoverTrigger>
       <UiPopoverContent
@@ -21,6 +28,7 @@
         class="p-0"
       >
         <ListFiltersContainer
+          :active-filters-count="activeLocalSortingCount"
           @apply="() => {
             close()
             emit('apply')
@@ -38,6 +46,11 @@
 </template>
 
 <script setup lang="ts">
+defineProps<{
+  activeSortingCount: number
+  activeLocalSortingCount: number
+}>()
+
 const isOpen = ref(false)
 watch(isOpen, (value) => {
   if (!value) {

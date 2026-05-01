@@ -11,6 +11,13 @@
             size="24"
           />
           {{ $t('components.list.sorting.Mobile.drawer_trigger_text') }}
+          <UiBadge
+            v-show="activeSortingCount > 0"
+            class="ml-2"
+            variant="destructive"
+          >
+            {{ activeSortingCount }}
+          </UiBadge>
         </UiButton>
       </UiDrawerTrigger>
       <UiDrawerContent>
@@ -21,6 +28,7 @@
           <UiDrawerDescription />
         </UiDrawerHeader>
         <ListFiltersContainer
+          :active-filters-count="activeLocalSortingCount"
           @apply="() => {
             open = false
             emit('apply')
@@ -39,6 +47,11 @@
 </template>
 
 <script setup lang="ts">
+defineProps<{
+  activeSortingCount: number
+  activeLocalSortingCount: number
+}>()
+
 const open = ref(false)
 watch(open, (value) => {
   if (!value) {

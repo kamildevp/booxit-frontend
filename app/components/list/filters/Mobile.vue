@@ -11,6 +11,13 @@
             size="24"
           />
           {{ $t('components.list.filters.Mobile.drawer_trigger_text') }}
+          <UiBadge
+            v-show="activeFiltersCount > 0"
+            class="ml-2"
+            variant="destructive"
+          >
+            {{ activeFiltersCount }}
+          </UiBadge>
         </UiButton>
       </UiDrawerTrigger>
       <UiDrawerContent>
@@ -21,6 +28,7 @@
           <UiDrawerDescription />
         </UiDrawerHeader>
         <ListFiltersContainer
+          :active-filters-count="activeLocalFiltersCount"
           @apply="setFiltersState(localFiltersState)"
           @clear="setFiltersState([])"
         >
@@ -42,6 +50,8 @@ const emit = defineEmits<{
   (e: 'apply'): void
 }>()
 const localFiltersState = ref([...filtersState.value])
+const activeFiltersCount = computed(() => filtersState.value.filter(el => !Array.isArray(el.value) || el.value.length > 0).length)
+const activeLocalFiltersCount = computed(() => localFiltersState.value.filter(el => !Array.isArray(el.value) || el.value.length > 0).length)
 
 const open = ref(false)
 watch(open, () => {

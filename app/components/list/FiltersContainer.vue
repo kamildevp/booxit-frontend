@@ -16,6 +16,15 @@
           size="20"
         />
         {{ $t(button.text) }}
+        <template v-if="button.badgeVariant">
+          <UiBadge
+            v-show="button.getBadgeCount() > 0"
+            :variant="button.badgeVariant"
+            class="ml-2"
+          >
+            {{ activeFiltersCount }}
+          </UiBadge>
+        </template>
       </UiButton>
     </div>
   </div>
@@ -41,8 +50,9 @@ const variants = cva(
 )
 interface Props {
   size?: VariantProps<typeof variants>['size']
+  activeFiltersCount: number
 }
-defineProps<Props>()
+const props = defineProps<Props>()
 const emit = defineEmits<{
   (e: 'apply' | 'clear'): void
 }>()
@@ -53,12 +63,16 @@ const buttons = [
     icon: 'ic:round-close',
     variant: 'ghost',
     onClick: () => emit('clear'),
+    getBadgeCount: () => props.activeFiltersCount,
+    badgeVariant: 'destructive',
   },
   {
     text: 'components.list.FiltersContainer.button.apply.text',
     icon: 'ic:round-manage-search',
     variant: 'default',
     onClick: () => emit('apply'),
+    getBadgeCount: () => 0,
+    badgeVariant: undefined,
   },
 ] as const
 </script>
