@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col gap-4 p-4 overflow-auto">
+  <div class="flex flex-col gap-4 p-4 overflow-auto w-full">
     <div class="text-muted-foreground p-1">
       {{ $t('components.list.Results.count_text', { count: resultsCount }) }}
     </div>
