@@ -18,7 +18,7 @@ export default function createListQuery(
 }
 
 function convertFiltersStateToRawFilters(filtersState: FiltersState): Record<string, unknown> {
-  return filtersState.map(
+  return filtersState.filter(el => el.value !== undefined).map(
     item => ({
       id: item.id,
       value: Array.isArray(item.value) ? item.value.map(el => String(el)) : String(item.value),
