@@ -1,5 +1,5 @@
 <template>
-  <div class="xl:hidden flex flex-1 justify-center overflow-hidden">
+  <div class="xl:hidden flex flex-1 justify-center">
     <UiDrawer v-model:open="open">
       <UiDrawerTrigger as-child>
         <UiButton

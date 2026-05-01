@@ -1,29 +1,31 @@
 <template>
   <div
     :class="[
-      'w-full flex p-2 sticky duration-300 z-5 bg-background border-b',
+      'w-full flex p-2 sticky duration-300 z-5 bg-background border-b items-center flex-wrap gap-2',
       scrollDir ? '-translate-y-full top-0' : 'top-(--header-height)',
     ]"
   >
     <slot v-bind="{ getFiltersUtils }" />
-    <ListFiltersMobile
-      v-if="hasFilters"
-      v-model:filters-state="filtersState"
-      @apply="emit('apply')"
-    >
-      <template #default="slotProps">
-        <slot
-          name="filters"
-          v-bind="slotProps"
-        />
-      </template>
-    </ListFiltersMobile>
-    <ListSorting
-      v-if="sortableColumns"
-      v-model:sorting-state="sortingState"
-      :sortable-columns="sortableColumns"
-      @apply="emit('apply')"
-    />
+    <div class="flex-1 flex items-center">
+      <ListFiltersMobile
+        v-if="hasFilters"
+        v-model:filters-state="filtersState"
+        @apply="emit('apply')"
+      >
+        <template #default="slotProps">
+          <slot
+            name="filters"
+            v-bind="slotProps"
+          />
+        </template>
+      </ListFiltersMobile>
+      <ListSorting
+        v-if="sortableColumns"
+        v-model:sorting-state="sortingState"
+        :sortable-columns="sortableColumns"
+        @apply="emit('apply')"
+      />
+    </div>
   </div>
 </template>
 
