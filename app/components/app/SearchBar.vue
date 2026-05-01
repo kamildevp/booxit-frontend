@@ -59,7 +59,15 @@
           v-show="displayedItems.length === 0"
           class="p-2"
         >
-          <slot name="empty" />
+          <slot name="empty">
+            <div class="flex flex-col gap-1 items-center text-muted-foreground p-2">
+              <Icon
+                name="ic:round-search-off"
+                size="48"
+              />
+              {{ $t('components.app.SearchBar.empty_text') }}
+            </div>
+          </slot>
         </li>
       </ul>
     </div>

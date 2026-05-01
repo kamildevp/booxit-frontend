@@ -12,6 +12,9 @@
             },
             "OptionsSeparator": {
                 "text": "OR"
+            },
+            "SearchBar": {
+                "empty_text": "No Results"
             }
         },
         "header": {

@@ -12,6 +12,9 @@
             },
             "OptionsSeparator": {
                 "text": "LUB"
+            },
+            "SearchBar": {
+                "empty_text": "Brak wyników"
             }
         },
         "header": {
