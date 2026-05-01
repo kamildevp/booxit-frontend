@@ -13,6 +13,7 @@
           />
           {{ $te(title) ? $t(title) : title }}
         </div>
+        <slot name="titleBadge" />
       </UiAccordionTrigger>
       <UiAccordionContent class="p-2">
         <slot />

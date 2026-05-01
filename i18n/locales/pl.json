@@ -221,6 +221,11 @@
                     "drawer_title": "Filtry"
                 }
             },
+            "filter-wrapper": {
+                "MultiSelectBadge": {
+                    "count_text": "Nie wybrano | Wybrano 1 | Wybrano {count}"
+                }
+            },
             "Pagination": {
                 "loaded_count_text": "Brak wyników | Wyświetlono {totalLoaded} z {count} wyniku | Wyświetlono {totalLoaded} z {count} wyników",
                 "load_more_button": {
