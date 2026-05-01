@@ -13,7 +13,7 @@
       <template #default="{ getFiltersUtils, ...slotProps }">
         <slot
           name="filters"
-          v-bind="{ ...getFiltersUtils<S>(), ...slotProps }"
+          v-bind="{ ...getFiltersUtils<S>(), applyFiltersAndSorting, ...slotProps }"
         />
       </template>
     </ListFiltersDesktop>
@@ -35,7 +35,7 @@
         <template #filters="{ getFiltersUtils, ...slotProps }">
           <slot
             name="filters"
-            v-bind="{ ...getFiltersUtils<S>(), ...slotProps }"
+            v-bind="{ ...getFiltersUtils<S>(), applyFiltersAndSorting, ...slotProps }"
           />
         </template>
       </ListHeader>
