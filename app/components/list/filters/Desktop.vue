@@ -11,7 +11,7 @@
       @apply="emit('apply')"
       @clear="clearFiltersState"
     >
-      <slot v-bind="{ getFiltersUtils }" />
+      <slot v-bind="{ getFiltersUtils, filtersState }" />
     </ListFiltersContainer>
   </aside>
 </template>

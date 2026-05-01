@@ -10,10 +10,10 @@
       v-model:filters-state="filtersState"
       @apply="applyFiltersAndSorting"
     >
-      <template #default="{ getFiltersUtils }">
+      <template #default="{ getFiltersUtils, ...slotProps }">
         <slot
           name="filters"
-          v-bind="{ ...getFiltersUtils<S>() }"
+          v-bind="{ ...getFiltersUtils<S>(), ...slotProps }"
         />
       </template>
     </ListFiltersDesktop>
@@ -26,16 +26,16 @@
         :sortable-columns="sortableColumns"
         @apply="applyFiltersAndSorting"
       >
-        <template #default="{ getFiltersUtils }">
+        <template #default="{ getFiltersUtils, ...slotProps }">
           <slot
             name="header"
-            v-bind="{ ...getFiltersUtils<S>(), applyFiltersAndSorting }"
+            v-bind="{ ...getFiltersUtils<S>(), applyFiltersAndSorting, ...slotProps }"
           />
         </template>
-        <template #filters="{ getFiltersUtils }">
+        <template #filters="{ getFiltersUtils, ...slotProps }">
           <slot
             name="filters"
-            v-bind="{ ...getFiltersUtils<S>() }"
+            v-bind="{ ...getFiltersUtils<S>(), ...slotProps }"
           />
         </template>
       </ListHeader>

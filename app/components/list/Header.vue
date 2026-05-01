@@ -5,7 +5,7 @@
       scrollDir ? '-translate-y-full top-0' : 'top-(--header-height)',
     ]"
   >
-    <slot v-bind="{ getFiltersUtils }" />
+    <slot v-bind="{ getFiltersUtils, filtersState }" />
     <div class="flex-1 flex items-center">
       <ListFiltersMobile
         v-if="hasFilters"

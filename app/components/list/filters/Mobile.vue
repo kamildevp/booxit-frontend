@@ -24,7 +24,7 @@
           @apply="setFiltersState(localFiltersState)"
           @clear="setFiltersState([])"
         >
-          <slot v-bind="{ getFiltersUtils }" />
+          <slot v-bind="{ getFiltersUtils, filtersState: localFiltersState }" />
         </ListFiltersContainer>
         <UiDrawerFooter class="hidden" />
       </UiDrawerContent>
