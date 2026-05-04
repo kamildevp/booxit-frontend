@@ -50,6 +50,11 @@
             }
         },
         "organizations": {
+            "ListItem": {
+                "book_button": {
+                    "text": "Book Now"
+                }
+            },
             "SearchBar": {
                 "placeholder": "Search for Businesses..."
             }

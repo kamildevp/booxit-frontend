@@ -50,6 +50,11 @@
             }
         },
         "organizations": {
+            "ListItem": {
+                "book_button": {
+                    "text": "Umów"
+                }
+            },
             "SearchBar": {
                 "placeholder": "Szukaj biznesów..."
             }
