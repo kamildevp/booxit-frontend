@@ -28,7 +28,7 @@
           <UiDrawerDescription />
         </UiDrawerHeader>
         <ListFiltersContainer
-          :active-filters-count="activeLocalFiltersCount"
+          :active-filters-count="activeFiltersCount"
           @apply="setFiltersState(localFiltersState)"
           @clear="setFiltersState([])"
         >
@@ -51,7 +51,6 @@ const emit = defineEmits<{
 }>()
 const localFiltersState = ref([...filtersState.value])
 const activeFiltersCount = computed(() => filtersState.value.filter(el => !Array.isArray(el.value) || el.value.length > 0).length)
-const activeLocalFiltersCount = computed(() => localFiltersState.value.filter(el => !Array.isArray(el.value) || el.value.length > 0).length)
 
 const open = ref(false)
 watch(open, () => {
