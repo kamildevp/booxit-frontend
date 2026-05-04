@@ -5,38 +5,26 @@
       scrollDir ? 'top-0 max-h-dvh' : 'top-(--header-height) max-h-(--sticky-content-max-height)',
     ]"
   >
-    <ListFiltersContainer
+    <ListFiltersContent
+      v-model:filters-state="filtersState"
       size="lg"
       class="flex-1"
-      :active-filters-count="activeFiltersCount"
       @apply="emit('apply')"
-      @clear="clearFiltersState"
     >
-      <slot v-bind="{ getFiltersUtils, filtersState }" />
-    </ListFiltersContainer>
+      <template #default="slotProps">
+        <slot v-bind="slotProps" />
+      </template>
+    </ListFiltersContent>
   </aside>
 </template>
 
 <script setup lang="ts">
-import type { ZodObject } from 'zod'
-import { getFilter, removeFilter, setFilter } from '~/utils/listFiltersUtils'
-import type { FilterKey, FiltersState, FilterValueType } from '~~/types/list'
+import type { FiltersState } from '~~/types/list'
 
 const { scrollDir } = useScroll()
 const filtersState = defineModel<FiltersState>('filtersState', { required: true })
-const activeFiltersCount = computed(() => filtersState.value.filter(el => !Array.isArray(el.value) || el.value.length > 0).length)
+
 const emit = defineEmits<{
   (e: 'apply'): void
 }>()
-
-function clearFiltersState() {
-  filtersState.value = []
-  emit('apply')
-}
-
-const getFiltersUtils = <S extends ZodObject>() => ({
-  getFilter: <K extends FilterKey<S>>(id: K): FilterValueType<S, K> => getFilter(filtersState.value, id),
-  removeFilter: <K extends FilterKey<S>>(id: K) => { filtersState.value = removeFilter(filtersState.value, id) },
-  setFilter: <K extends FilterKey<S>>(id: K, value: FilterValueType<S, K>) => { filtersState.value = setFilter(filtersState.value, id, value) },
-})
 </script>
