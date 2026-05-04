@@ -28,7 +28,7 @@
         class="p-0"
       >
         <ListFiltersContainer
-          :active-filters-count="activeLocalSortingCount"
+          :active-filters-count="activeSortingCount"
           @apply="() => {
             close()
             emit('apply')
@@ -48,7 +48,6 @@
 <script setup lang="ts">
 defineProps<{
   activeSortingCount: number
-  activeLocalSortingCount: number
 }>()
 
 const isOpen = ref(false)

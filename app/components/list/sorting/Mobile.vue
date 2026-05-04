@@ -28,7 +28,7 @@
           <UiDrawerDescription />
         </UiDrawerHeader>
         <ListFiltersContainer
-          :active-filters-count="activeLocalSortingCount"
+          :active-filters-count="activeSortingCount"
           @apply="() => {
             open = false
             emit('apply')
@@ -49,7 +49,6 @@
 <script setup lang="ts">
 defineProps<{
   activeSortingCount: number
-  activeLocalSortingCount: number
 }>()
 
 const open = ref(false)

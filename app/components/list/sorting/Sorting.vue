@@ -2,7 +2,6 @@
   <div class="flex-1 justify-center">
     <ListSortingDesktop
       :active-sorting-count="activeSortingCount"
-      :active-local-sorting-count="activeLocalSortingCount"
       @apply="setSortingState(localSortingState)"
       @clear="setSortingState([])"
       @close="resetLocalSortingState"
@@ -14,7 +13,6 @@
     </ListSortingDesktop>
     <ListSortingMobile
       :active-sorting-count="activeSortingCount"
-      :active-local-sorting-count="activeLocalSortingCount"
       @apply="setSortingState(localSortingState)"
       @clear="setSortingState([])"
       @close="resetLocalSortingState"
@@ -40,7 +38,6 @@ const emit = defineEmits<{
 }>()
 const localSortingState = ref([...sortingState.value])
 const activeSortingCount = computed(() => sortingState.value.length)
-const activeLocalSortingCount = computed(() => localSortingState.value.length)
 
 function setSortingState(state: SortingState) {
   sortingState.value = [...state]
