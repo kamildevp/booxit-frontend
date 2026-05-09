@@ -17,6 +17,7 @@
         :theme="isDark ? 'dark' : 'light'"
       />
     </main>
+    <AppBottomNav />
   </div>
 </template>
 

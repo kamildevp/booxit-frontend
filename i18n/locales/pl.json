@@ -5,6 +5,11 @@
                 "show_less": "Pokaż mniej",
                 "show_more": "Pokaż więcej"
             },
+            "BottomNav": {
+                "search": "Szukaj",
+                "log_in": "Zaloguj się",
+                "account": "Konto"
+            },
             "OptionsSeparator": {
                 "text": "LUB"
             },

@@ -5,6 +5,11 @@
                 "show_less": "Show less",
                 "show_more": "Show more"
             },
+            "BottomNav": {
+                "search": "Search",
+                "log_in": "Log In",
+                "account": "Account"
+            },
             "OptionsSeparator": {
                 "text": "OR"
             },
