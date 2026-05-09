@@ -2,7 +2,7 @@
   <div
     v-if="items"
     :class="[
-      'flex xl:hidden border-t justify-around p-2 fixed w-full bottom-0 bg-background z-10 duration-300',
+      'flex md:hidden border-t justify-around p-2 fixed w-full bottom-0 bg-background z-10 duration-300',
       { 'translate-y-full': scrollDir },
     ]"
   >
