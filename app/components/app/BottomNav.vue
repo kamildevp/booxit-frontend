@@ -41,9 +41,9 @@ type NavItem = {
 }
 const items = computed<NavItem[]>(() => [
   {
-    id: 'search',
-    label: 'components.app.BottomNav.search',
-    icon: 'ic:round-search',
+    id: 'start',
+    label: 'components.app.BottomNav.start',
+    icon: 'ic:round-home',
     path: '/',
   },
   {
