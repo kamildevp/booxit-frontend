@@ -5,11 +5,6 @@
                 "show_less": "Pokaż mniej",
                 "show_more": "Pokaż więcej"
             },
-            "Header": {
-                "close_btn": {
-                    "text": "Zamknij"
-                }
-            },
             "OptionsSeparator": {
                 "text": "LUB"
             },
@@ -18,14 +13,6 @@
             }
         },
         "header": {
-            "Preferences": {
-                "lang_switch": {
-                    "label": "Język:"
-                },
-                "theme_switch": {
-                    "label": "Motyw:"
-                }
-            },
             "LoginButton": {
                 "text": "Zaloguj się"
             },
@@ -57,6 +44,21 @@
             },
             "SearchBar": {
                 "placeholder": "Szukaj biznesów..."
+            }
+        },
+        "preferences": {
+            "Content": {
+                "lang_switch": {
+                    "label": "Język:"
+                },
+                "theme_switch": {
+                    "label": "Motyw:"
+                }
+            },
+            "Mobile": {
+                "close_btn": {
+                    "text": "Zamknij"
+                }
             }
         },
         "social_login": {

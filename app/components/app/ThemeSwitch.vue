@@ -10,7 +10,7 @@
           themeBtn.value === isDark ? '' : 'bg-transparent text-foreground hover:bg-accent',
         ]"
         size="icon-sm"
-        @click="emit('change', themeBtn.name)"
+        @click="setTheme(themeBtn.name)"
       >
         <Icon
           :name="themeBtn.icon"
@@ -22,18 +22,6 @@
 </template>
 
 <script setup lang="ts">
-export type ThemeSwitchProps = {
-  isDark: boolean
-  isUnknown: boolean
-}
-
-export type ThemeSwitchEmits = {
-  change: [value: Theme]
-}
-
-defineProps<ThemeSwitchProps>()
-const emit = defineEmits<ThemeSwitchEmits>()
-
 const themeBtns: {
   name: Theme
   value: boolean
@@ -50,4 +38,5 @@ const themeBtns: {
     icon: 'ic:baseline-dark-mode',
   },
 ]
+const { isUnknown, isDark, setTheme } = useDarkSSR()
 </script>

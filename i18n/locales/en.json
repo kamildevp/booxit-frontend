@@ -5,11 +5,6 @@
                 "show_less": "Show less",
                 "show_more": "Show more"
             },
-            "Header": {
-                "close_btn": {
-                    "text": "Close"
-                }
-            },
             "OptionsSeparator": {
                 "text": "OR"
             },
@@ -18,14 +13,6 @@
             }
         },
         "header": {
-            "Preferences": {
-                "lang_switch": {
-                    "label": "Language:"
-                },
-                "theme_switch": {
-                    "label": "Theme:"
-                }
-            },
             "LoginButton": {
                 "text": "Log in"
             },
@@ -57,6 +44,21 @@
             },
             "SearchBar": {
                 "placeholder": "Search for Businesses..."
+            }
+        },
+        "preferences": {
+            "Content": {
+                "lang_switch": {
+                    "label": "Language:"
+                },
+                "theme_switch": {
+                    "label": "Theme:"
+                }
+            },
+            "Mobile": {
+                "close_btn": {
+                    "text": "Close"
+                }
             }
         },
         "social_login": {
