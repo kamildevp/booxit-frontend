@@ -7,7 +7,6 @@
   >
     <ListFiltersContent
       v-model:filters-state="filtersState"
-      size="lg"
       class="flex-1"
       @apply="emit('apply')"
     >
