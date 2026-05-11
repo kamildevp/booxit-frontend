@@ -15,20 +15,27 @@ export const useAPI = async function<R extends EventHandlerRequest = EventHandle
   const { baseApiUrl } = useRuntimeConfig()
   const url = `${baseApiUrl}/${path}`
   const cookies = parseCookies(event)
-  headers = accessTokenCookieName in cookies ? { Authorization: 'Bearer ' + cookies[accessTokenCookieName], ...headers } : headers
+  headers = accessTokenCookieName in cookies ? { Authorization: `Bearer ${cookies[accessTokenCookieName]}`, ...headers } : headers
 
-  return await $fetch(url, {
+  return $fetch(url, {
     method,
     body,
     headers,
     query,
   }).catch((error: FetchError) => {
-    const data = error.status == 422 ? validationErrorResponseSchema.parse(error.data).data.errors : error.data
+    let errorsData: unknown
+    if (error.status === 422) {
+      const result = validationErrorResponseSchema.safeParse(error.data)
+      errorsData = result.success ? result.data.data.errors : {}
+    }
+    else {
+      errorsData = error.data
+    }
 
     throw createError({
       statusMessage: error.statusMessage,
       status: error.status,
-      data: data,
+      data: errorsData,
     })
   })
 }
