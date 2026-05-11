@@ -3,16 +3,16 @@
     <div class="w-full h-50 md:h-full md:w-65">
       <NuxtImg
         :src="bannerUrl"
-        alt="Banner"
+        :alt="name"
         class="w-full h-full object-cover"
         format="webp"
         sizes="400px md:260px"
       />
     </div>
     <div class="flex-1 flex flex-col gap-2 p-4">
-      <h1 class="font-bold text-2xl">
+      <span class="font-bold text-2xl">
         {{ name }}
-      </h1>
+      </span>
       <div class="flex items-center gap-1 text-muted-foreground">
         <Icon
           name="ic:baseline-location-on"
