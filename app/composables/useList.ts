@@ -97,9 +97,6 @@ export function useList<R extends PaginatorRequest>(
     pagesCount,
     filtersState,
     sortingState,
-    getFilter,
-    setFilter,
-    removeFilter,
     applyFiltersAndSorting,
   }
 }
