@@ -1,21 +1,25 @@
 <template>
-  <div
-    v-if="items"
+  <nav
     :class="[
       'flex md:hidden border-t justify-around p-2 fixed w-full bottom-0 bg-background z-10 duration-300',
       { 'translate-y-full': scrollDir },
     ]"
+    aria-label="Main navigation"
   >
     <div
-      v-for="item, indx in items"
-      :key="indx"
+      v-for="item in items"
+      :key="item.id"
       class="flex-1"
     >
-      <NuxtLinkLocale :to="item.path">
+      <NuxtLinkLocale
+        :to="item.path"
+        :aria-current="selectedItem?.id === item.id ? 'page' : undefined"
+        class="block w-full"
+      >
         <div
           :class="[
             'flex flex-col items-center text-sm font-bold',
-            selectedItem?.id == item.id ? 'text-primary' : 'text-muted-foreground',
+            selectedItem?.id === item.id ? 'text-primary' : 'text-muted-foreground',
           ]"
         >
           <Icon
@@ -26,7 +30,7 @@
         </div>
       </NuxtLinkLocale>
     </div>
-  </div>
+  </nav>
 </template>
 
 <script setup lang="ts">
