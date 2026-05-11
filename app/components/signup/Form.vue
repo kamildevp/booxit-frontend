@@ -23,6 +23,7 @@
             class="w-full items-center"
             type="submit"
             form="signup-form"
+            :disabled="pending"
           >
             <UiSpinner v-if="pending" />
             {{ $t('components.signup.Form.button.create_account.text') }}
@@ -55,7 +56,7 @@ const formSchema = z.object({
   path: ['password_confirmation'],
 })
 
-const { handleSubmit, validate, setErrors } = useForm({
+const { handleSubmit, setErrors } = useForm({
   validationSchema: formSchema,
 })
 
@@ -86,7 +87,6 @@ const emit = defineEmits<{
 }>()
 
 const onSubmit = handleSubmit(async (data) => {
-  validate()
   pending.value = true
   const { password_confirmation, ...body } = data
   const result = await $fetch('/api/users', {

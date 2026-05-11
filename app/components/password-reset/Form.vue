@@ -22,6 +22,7 @@
           class="w-full items-center"
           type="submit"
           form="password-reset-form"
+          :disabled="pending"
         >
           <UiSpinner v-if="pending" />
           {{ $t('components.password_reset.Form.button.reset_password.text') }}
@@ -39,7 +40,7 @@ const formSchema = z.object({
   email: z.email(),
 })
 
-const { handleSubmit, validate } = useForm({
+const { handleSubmit } = useForm({
   validationSchema: formSchema,
 })
 
@@ -49,7 +50,6 @@ const emit = defineEmits<{
 }>()
 
 const onSubmit = handleSubmit(async (data) => {
-  validate()
   pending.value = true
   await $fetch('/api/users/reset-password-request', {
     method: 'POST',

@@ -19,6 +19,7 @@
           class="w-full items-center"
           type="submit"
           form="login-form"
+          :disabled="pending"
         >
           <UiSpinner v-if="pending" />
           <Icon
@@ -53,14 +54,13 @@ const formSchema = z.object({
   password: z.string().min(1),
 })
 
-const { handleSubmit, validate } = useForm({
+const { handleSubmit } = useForm({
   validationSchema: formSchema,
 })
 
 const pending = ref(false)
 
 const onSubmit = handleSubmit(async (data) => {
-  validate()
   pending.value = true
   const result = await login(data.email, data.password)
   pending.value = false
