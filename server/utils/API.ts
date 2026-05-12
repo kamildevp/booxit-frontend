@@ -22,6 +22,7 @@ export const useAPI = async function<R extends EventHandlerRequest = EventHandle
     body,
     headers,
     query,
+    timeout: 5000,
   }).catch((error: FetchError) => {
     let errorsData: unknown
     if (error.status === 422) {
