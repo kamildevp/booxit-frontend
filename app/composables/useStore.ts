@@ -1,11 +1,11 @@
 import type { PaginatorRequest, PaginatorResponse } from '~~/types/api'
-import type { ColumnFiltersState, SortingState } from '@tanstack/vue-table'
+import type { FiltersState, SortingState } from '~~/types/list'
 
 export default function<R extends PaginatorRequest>(
   path: R,
   initialPage: number = 1,
   initialPageSize: number = 20,
-  initialFiltersState: ColumnFiltersState = [],
+  initialFiltersState: FiltersState = [],
   initialSortingState: SortingState = [],
   autoRefresh: boolean = true,
   cacheKey: string = '',
