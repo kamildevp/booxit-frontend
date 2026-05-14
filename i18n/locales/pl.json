@@ -14,7 +14,9 @@
                 "text": "LUB"
             },
             "SearchBar": {
-                "empty_text": "Brak wyników"
+                "empty_text": "Brak wyników",
+                "clear_button_label": "Wyczyść wyszukiwanie",
+                "search_button_label": "Szukaj"
             }
         },
         "header": {

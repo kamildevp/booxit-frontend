@@ -14,7 +14,9 @@
                 "text": "OR"
             },
             "SearchBar": {
-                "empty_text": "No Results"
+                "empty_text": "No Results",
+                "clear_button_label": "Clear search",
+                "search_button_label": "Search"
             }
         },
         "header": {

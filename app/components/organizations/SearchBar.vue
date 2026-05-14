@@ -5,6 +5,7 @@
     :max-results="4"
     :placeholder="$t('components.organizations.SearchBar.placeholder')"
     @apply="emit('apply', search)"
+    @clear="emit('apply', undefined)"
   >
     <template #item="{ item }">
       <NuxtLinkLocale :to="`/organizations/${item.id}`">
