@@ -4,6 +4,7 @@
     :items="filteredItems"
     :max-results="4"
     :placeholder="$t('components.organizations.SearchBar.placeholder')"
+    :size="size"
     @apply="emit('apply', search)"
     @clear="emit('apply', undefined)"
   >
@@ -12,7 +13,7 @@
         <div class="flex gap-4 items-center">
           <NuxtImg
             :src="item.banner_url"
-            alt="Banner"
+            :alt="item.name"
             class="object-cover rounded-lg"
             format="webp"
             height="40"
@@ -40,9 +41,11 @@
 import { useDebounceFn } from '@vueuse/core'
 import { useFilter } from 'reka-ui'
 import type { FiltersState } from '~~/types/list'
+import type { Variants as SearchBarVariants } from '../app/search-bar/variants'
 
 const props = defineProps<{
   filtersState: FiltersState
+  size?: SearchBarVariants
 }>()
 const { items, filtersState: searchFiltersState, pagesCount } = useStore(
   '/api/organizations',
@@ -72,11 +75,15 @@ const filteredItems = computed(() => {
 
 watch(() => props.filtersState, () => {
   search.value = getNameFilterValue()
-  updateSearchFiltersState()
+  updateSearchFiltersState(search.value)
 })
 
 watch(pagesCount, (value) => {
-  if (value && value > 1) {
+  if (value === undefined) {
+    return
+  }
+
+  if (value > 1) {
     manualSearchPrefix.value = undefined
   }
   else {
@@ -84,26 +91,24 @@ watch(pagesCount, (value) => {
   }
 }, { immediate: true })
 
-watch(search, (value) => {
-  updateSearch(value)
-})
-
-function getNameFilterValue() {
-  return props.filtersState.find(el => el.id === 'filters[name]')?.value as string | undefined
-}
-
-function updateSearchFiltersState() {
-  const newValue = [...props.filtersState].filter(el => el.id !== 'filters[name]')
-  newValue.push({ id: 'filters[name]', value: search.value })
-  searchFiltersState.value = newValue
-}
-
 const updateSearch = useDebounceFn((value?: string) => {
   if (value !== undefined && manualSearchPrefix.value !== undefined && value.startsWith(manualSearchPrefix.value)) {
     return
   }
   else {
-    updateSearchFiltersState()
+    updateSearchFiltersState(value)
   }
 }, 300)
+
+watch(search, updateSearch)
+
+function getNameFilterValue() {
+  return props.filtersState.find(el => el.id === 'filters[name]')?.value as string | undefined
+}
+
+function updateSearchFiltersState(value?: string) {
+  const newValue = [...props.filtersState].filter(el => el.id !== 'filters[name]')
+  newValue.push({ id: 'filters[name]', value: value })
+  searchFiltersState.value = newValue
+}
 </script>
