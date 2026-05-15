@@ -10,6 +10,7 @@ export default function parseListQuery(
   defaultPage: number = 1,
   defaultPageSize: number = 20,
 ) {
+  const sanitizedQuery = sanitizeQuery(query)
   const sortingSchema = sortableColumns
     ? z.object({
         order: z.string().min(1),
@@ -25,9 +26,9 @@ export default function parseListQuery(
     per_page: z.coerce.number().int().positive().optional(),
   })
 
-  const filtersParsingResult = filtersSchema?.safeParse(query)
-  const sortingParsingResult = sortingSchema?.safeParse(query)
-  const paginationParsingResult = paginationSchema.safeParse(query)
+  const filtersParsingResult = filtersSchema?.safeParse(sanitizedQuery)
+  const sortingParsingResult = sortingSchema?.safeParse(sanitizedQuery)
+  const paginationParsingResult = paginationSchema.safeParse(sanitizedQuery)
 
   return {
     page: paginationParsingResult.data?.page ?? defaultPage,
@@ -51,4 +52,15 @@ function convertRawSortingToSortingState(sorting: string): SortingState {
       desc,
     }
   })
+}
+
+function sanitizeQuery(query: LocationQuery): LocationQuery {
+  return Object.entries(query).reduce((acc, [key, value]) => {
+    let sanitizedValue = Array.isArray(value) ? [...value] : value
+    if (!Array.isArray(sanitizedValue) && key.endsWith('[]')) {
+      sanitizedValue = [sanitizedValue]
+    }
+
+    return { ...acc, [key]: sanitizedValue }
+  }, {})
 }
