@@ -27,6 +27,36 @@
                 "text": "Wyloguj się"
             }
         },
+        "home": {
+            "hero": {
+                "title": "Rezerwuj usługi bez wysiłku",
+                "description": "Odkryj firmy w Twojej okolicy i zarezerwuj termin w kilka sekund",
+                "benefits": {
+                    "free": "Całkowicie bezpłatnie",
+                    "instant": "Szybko i prosto",
+                    "no_account": "Bez zakładania konta"
+                }
+            },
+            "Categories": {
+                "show_all": "Pokaż wszystkie kategorie",
+                "show_less": "Pokaż mniej",
+                "title": "Przeglądaj kategorie"
+            },
+            "CTA": {
+                "badge_text": "Dla Firm",
+                "benefit": {
+                    "free": "Żadnych opłat, żadnych ukrytych kosztów. Podstawowe funkcjonalności platformy są zawsze całkowicie bezpłatne.",
+                    "management": "Zarządzaj swoimi usługami i dostępnością w jednym miejscu, bez zbędnego wysiłku.",
+                    "tasks_delegation": "Rozdzielaj pracę w zespole, przypisując współpracowników do odpowiednich harmonogramów.",
+                    "easy_booking": "Daj klientom wygodny sposób na rezerwację Twoich usług o każdej porze."
+                },
+                "description": "Zarządzaj rezerwacjami i przyciągaj nowych klientów.",
+                "register_button": {
+                    "text": "Zarejestruj swoją firmę"
+                },
+                "title": "Rozwijaj swój biznes z Booxit"
+            }
+        },
         "login": {
             "FormHeader": {
                 "title": "Zaloguj się",
@@ -268,6 +298,10 @@
         }
     },
     "pages": {
+        "index": {
+            "title": "Booxit",
+            "description": "Odkryj firmy w Twojej okolicy i zarezerwuj termin w kilka sekund"
+        },
         "login": {
             "card": {
                 "button": {

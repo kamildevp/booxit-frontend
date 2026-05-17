@@ -27,6 +27,36 @@
                 "text": "Logout"
             }
         },
+        "home": {
+            "hero": {
+                "title": "Book Services Effortlessly",
+                "description": "Discover local businesses and book your appointment in seconds",
+                "benefits": {
+                    "free": "100% Free",
+                    "instant": "Quick & Simple",
+                    "no_account": "No Account Needed"
+                }
+            },
+            "Categories": {
+                "show_all": "Show all categories",
+                "show_less": "Show less",
+                "title": "Browse Categories"
+            },
+            "CTA": {
+                "badge_text": "For Businesses",
+                "benefit": {
+                    "free": "No fees, no hidden costs. The platform core features are always completely free to use.",
+                    "management": "Manage your services and availability in one place with minimal effort.",
+                    "tasks_delegation": "Split work across your team by assigning your coworkers to appropriate schedules.",
+                    "easy_booking": "Give clients a frictionless way to book your services 24/7."
+                },
+                "description": "Manage bookings and attract new customers.",
+                "register_button": {
+                    "text": "Register your business"
+                },
+                "title": "Grow Your Business with Booxit"
+            }
+        },
         "login": {
             "FormHeader": {
                 "title": "Log In",
@@ -268,6 +298,10 @@
         }
     },
     "pages": {
+        "index": {
+            "title": "Booxit",
+            "description": "Discover local businesses and book your appointment in seconds"
+        },
         "login": {
             "card": {
                 "button": {
