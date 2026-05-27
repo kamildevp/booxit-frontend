@@ -7,7 +7,15 @@ import type { AuthStatus } from '~~/types/auth'
 
 export default defineEventHandler(async (event) => {
   const body = await readBody(event)
-  const parsedBody = socialAuthLoginParameters.parse(body)
+  const bodyParsingResult = socialAuthLoginParameters.safeParse(body)
+  if (!bodyParsingResult.success) {
+    throw createError({
+      statusMessage: 'Bad Request',
+      status: 400,
+    })
+  }
+
+  const parsedBody = bodyParsingResult.data
   const parameters = resolveSocialAuthTokenExchangeParameters(event, parsedBody.state)
   const config = useRuntimeConfig()
   const response = await useAPI(event, parameters.url, 'POST', {
