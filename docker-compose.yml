@@ -5,3 +5,12 @@ services:
     volumes:
       - .:/app
       - /app/.git
+  redis:
+    image: redis:8.8.0
+    command: redis-server --requirepass ${NUXT_REDIS_PASSWORD:-!changeMe} --appendonly yes
+    volumes:
+      - ./docker/redis/data:/data
+  redis-insight:
+    image: redis/redisinsight:3.4
+    volumes:
+      - ./docker/redis-insight/data:/data

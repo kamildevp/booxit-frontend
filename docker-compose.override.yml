@@ -3,7 +3,11 @@ services:
     ports:
       - 3000:3000
     networks:
+      - default
       - backend
+  redis-insight:
+    ports:
+      - "5540:5540"
 
 networks:
   backend:

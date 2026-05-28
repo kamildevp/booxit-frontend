@@ -16,6 +16,7 @@ export default defineNuxtConfig({
     googleAuthClientId: '',
     socialAuthRedirectUri: '',
     appId: '',
+    redisPassword: '',
   },
   compatibilityDate: '2025-07-15',
   vite: {
