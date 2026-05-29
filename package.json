@@ -30,6 +30,7 @@
     "pkce-challenge": "^6.0.0",
     "reka-ui": "^2.9.3",
     "shadcn-nuxt": "^2.4.3",
+    "slugify": "^1.6.9",
     "tailwind-merge": "^3.4.0",
     "vaul-vue": "^0.4.1",
     "vee-validate": "^5.0.0-beta.0",
