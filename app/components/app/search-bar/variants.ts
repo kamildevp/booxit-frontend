@@ -1,7 +1,7 @@
 import type { ButtonVariants } from '~/components/ui/button'
 import { cva } from 'class-variance-authority'
 
-export type Variants = 'default' | 'xl'
+export type Variants = 'default' | 'lg'
 
 export const iconVariants = cva(
   '',
@@ -9,7 +9,7 @@ export const iconVariants = cva(
     variants: {
       size: {
         default: 'text-2xl',
-        xl: 'text-3xl',
+        lg: 'text-3xl',
       },
     },
     defaultVariants: {
@@ -24,7 +24,7 @@ export const clearIconVariants = cva(
     variants: {
       size: {
         default: 'text-xl',
-        xl: 'text-2xl',
+        lg: 'text-2xl',
       },
     },
     defaultVariants: {
@@ -39,7 +39,7 @@ export const resultsListVariants = cva(
     variants: {
       size: {
         default: 'top-11',
-        xl: 'top-13 md:top-14',
+        lg: 'top-13 md:top-14',
       },
     },
     defaultVariants: {
@@ -50,5 +50,5 @@ export const resultsListVariants = cva(
 
 export const clearButtonSizes: Record<Variants, ButtonVariants['size']> = {
   default: 'icon-sm',
-  xl: 'icon',
+  lg: 'icon',
 }

@@ -9,7 +9,7 @@ export const inputVariants = cva(
     variants: {
       size: {
         default: "h-9 text-base md:text-sm file:h-7",
-        xl: "h-10 md:h-11 px-4 text-base md:text-lg file:h-9",
+        lg: "h-10 md:h-11 px-4 text-base file:h-9",
       },
     },
     defaultVariants: {

@@ -22,7 +22,7 @@
     <OrganizationsSearchBar
       class="w-full max-w-xl lg:max-w-2xl"
       :filters-state="emptyFilters"
-      size="xl"
+      size="lg"
       @apply="onSearchApply"
     />
   </section>
