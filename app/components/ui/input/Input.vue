@@ -23,8 +23,9 @@ const modelValue = useVModel(props, "modelValue", emits, {
 
 const inputRef = useTemplateRef('input')
 const focus = () => inputRef.value?.focus()
+const blur = () => inputRef.value?.blur()
 
-defineExpose({ focus })
+defineExpose({ focus, blur })
 </script>
 
 <template>
