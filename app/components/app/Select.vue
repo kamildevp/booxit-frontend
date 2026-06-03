@@ -6,7 +6,9 @@
     >
       <UiSelectTrigger
         :aria-invalid="ariaInvalid"
-        :class="['rounded-full', triggerCls]"
+        :class="['rounded-full']"
+        :size
+        v-bind="triggerProps"
       >
         <UiSelectValue :placeholder="placeholder">
           <div
@@ -23,11 +25,12 @@
           </div>
         </UiSelectValue>
       </UiSelectTrigger>
-      <UiSelectContent>
+      <UiSelectContent v-bind="contentProps">
         <UiSelectItem
           v-for="entry in entries"
           :key="entry[valueKey]"
           :value="entry[valueKey]"
+          :size
         >
           <div class="flex items-center gap-1">
             <Icon
@@ -52,8 +55,9 @@
     ET extends Entry<LK, VK, IK> = Entry<LK, VK, IK>
   "
 >
-import type { AcceptableValue } from 'reka-ui'
+import type { AcceptableValue, SelectContentProps, SelectTriggerProps } from 'reka-ui'
 import type { HTMLAttributes } from 'vue'
+import type { SelectVariants } from '../ui/select'
 
 export interface Props<
   LabelKey extends string,
@@ -68,7 +72,9 @@ export interface Props<
   placeholder?: string
   defaultValue?: EntryType[ValueKey]
   ariaInvalid?: boolean
-  triggerCls?: HTMLAttributes['class']
+  triggerProps?: SelectTriggerProps & { class?: HTMLAttributes['class'] }
+  contentProps?: SelectContentProps & { class?: HTMLAttributes['class'] }
+  size?: SelectVariants['size']
 }
 
 const props = defineProps<Props<LK, VK, IK, ET>>()

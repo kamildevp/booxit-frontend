@@ -23,7 +23,7 @@
       value-key="value"
       :placeholder="$t(`${translationPath}.select.placeholder`)"
       :model-value="selectValue"
-      trigger-cls="text-primary! border-primary! w-full"
+      :trigger-props="{ class: 'text-primary! border-primary! w-full' }"
       @value-changed="(value) => addSorting(value)"
     />
   </div>
