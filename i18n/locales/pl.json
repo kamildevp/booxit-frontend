@@ -10,6 +10,20 @@
                 "log_in": "Zaloguj się",
                 "account": "Konto"
             },
+            "combo_box": {
+                "Input": {
+                    "clear_button_label": "Wyczyść"
+                },
+                "Mobile": {
+                    "dialog": {
+                        "description": "Wybierz opcję",
+                        "close_button_label": "Zamknij"
+                    }
+                },
+                "EmptyResults": {
+                    "empty_text":"Brak wyników"
+                }
+            },
             "OptionsSeparator": {
                 "text": "LUB"
             },

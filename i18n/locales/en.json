@@ -10,6 +10,20 @@
                 "log_in": "Log In",
                 "account": "Account"
             },
+            "combo_box": {
+                "Input": {
+                    "clear_button_label": "Clear"
+                },
+                "Mobile": {
+                    "dialog": {
+                        "description": "Select option",
+                        "close_button_label": "Close"
+                    }
+                },
+                "EmptyResults": {
+                    "empty_text":"No Results"
+                }
+            },
             "OptionsSeparator": {
                 "text": "OR"
             },
