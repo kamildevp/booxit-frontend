@@ -1,11 +1,9 @@
-import type z from 'zod'
-import { ZodDefault, ZodEmail, ZodEnum, ZodURL } from 'zod'
+import { ZodEmail, ZodEnum, ZodURL } from 'zod'
 import type { ZodType } from 'zod'
-import type { FieldShape, InnerType, ShapeResolver } from './types'
+import type { FieldShape, ShapeResolver } from './types'
 import Input from './field/Input.vue'
 import type { Props as InputProps } from './field/Input.vue'
 import type { Props as SelectProps } from './field/Select.vue'
-import { resolveFieldShape } from './utils'
 import Select from './field/Select.vue'
 
 export const shapeResolvers = {
@@ -44,22 +42,7 @@ export const shapeResolvers = {
         valueKey: 'value',
         iconKey: 'icon',
         entries: entries,
-        defaultValue: type.options[0],
       },
     }
-  },
-  default: <T extends ZodType>(name: string, type: T, translationPath: string): FieldShape | undefined => {
-    if (!(type instanceof ZodDefault)) {
-      return undefined
-    }
-    const innerType = type.unwrap() as InnerType<T>
-
-    const shape = resolveFieldShape(name, innerType, translationPath)
-    if (!shape) {
-      return undefined
-    }
-
-    shape.props.defaultValue = type.def.defaultValue as z.infer<T>
-    return shape
   },
 } satisfies Record<string, ShapeResolver>

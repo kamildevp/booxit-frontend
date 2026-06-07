@@ -58,12 +58,14 @@ const formSchema = z.object({
 
 const { handleSubmit, setErrors } = useForm({
   validationSchema: formSchema,
+  initialValues: {
+    language_preference: locale.value,
+  },
 })
 
 const fieldsOverride: FieldsOverride<typeof formSchema> = {
   language_preference: {
     props: {
-      defaultValue: locale.value,
       entries: [...languages],
     },
   },
