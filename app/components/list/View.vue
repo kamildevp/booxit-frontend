@@ -7,7 +7,7 @@
   >
     <ListFiltersDesktop
       v-if="hasFilters"
-      v-model:filters-state="filtersState"
+      v-model:filters-state="localFiltersState"
       @apply="applyFiltersAndSorting"
     >
       <template #default="{ getFiltersUtils, ...slotProps }">
@@ -20,8 +20,8 @@
     <div class="flex flex-col flex-1 items-center">
       <ListHeader
         v-if="hasHeader"
-        v-model:filters-state="filtersState"
-        v-model:sorting-state="sortingState"
+        v-model:filters-state="localFiltersState"
+        v-model:sorting-state="localSortingState"
         :has-filters="hasFilters"
         :sortable-columns="sortableColumns"
         @apply="applyFiltersAndSorting"
@@ -90,11 +90,18 @@ const {
   pagesCount,
   sortingState,
   filtersState,
-  applyFiltersAndSorting,
+  updateFiltersAndSorting,
 } = useList(
   props.resourceUrl,
   props.filtersSchema,
   props.sortableColumns,
   true,
 )
+
+const localFiltersState = ref([...filtersState.value])
+const localSortingState = ref([...sortingState.value])
+
+function applyFiltersAndSorting() {
+  updateFiltersAndSorting(localFiltersState.value, localSortingState.value)
+}
 </script>

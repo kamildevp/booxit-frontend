@@ -1,6 +1,6 @@
 import type { PaginatorItem, PaginatorRequest } from '~~/types/api'
 import type { ZodObject } from 'zod'
-import type { SortingState } from '~~/types/list'
+import type { FiltersState, SortingState } from '~~/types/list'
 
 export function useList<R extends PaginatorRequest>(
   path: R,
@@ -41,14 +41,14 @@ export function useList<R extends PaginatorRequest>(
   }
 
   watch(page, () => {
-    updateQuery(!appendDataOnPageChange)
+    updateQuery(filtersState.value, sortingState.value, !appendDataOnPageChange)
   })
 
   watch(pageSize, () => {
     if (appendDataOnPageChange) {
       resetData()
     }
-    updateQuery()
+    updateQuery(filtersState.value, sortingState.value)
   })
 
   watch(parsedQuery, async (value) => {
@@ -72,13 +72,13 @@ export function useList<R extends PaginatorRequest>(
     page.value = 1
   }
 
-  function applyFiltersAndSorting() {
+  function updateFiltersAndSorting(newFiltersState: FiltersState, newSortingState: SortingState) {
     resetData()
-    updateQuery()
+    updateQuery(newFiltersState, newSortingState)
   }
 
-  function updateQuery(push: boolean = true) {
-    const query = createListQuery(page.value, pageSize.value, filtersState.value, sortingState.value)
+  function updateQuery(newFiltersState: FiltersState, newSortingState: SortingState, push: boolean = true) {
+    const query = createListQuery(page.value, pageSize.value, [...newFiltersState], [...newSortingState])
     if (push) {
       router.push({ query })
     }
@@ -97,6 +97,6 @@ export function useList<R extends PaginatorRequest>(
     pagesCount,
     filtersState,
     sortingState,
-    applyFiltersAndSorting,
+    updateFiltersAndSorting,
   }
 }
