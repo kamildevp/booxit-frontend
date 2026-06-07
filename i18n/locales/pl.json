@@ -31,6 +31,14 @@
                 "empty_text": "Brak wyników",
                 "clear_button_label": "Wyczyść wyszukiwanie",
                 "search_button_label": "Szukaj"
+            },
+            "select": {
+                "Mobile": {
+                    "drawer": {
+                        "title": "Wybierz opcję",
+                        "description": "Kliknij na jedną z opcji poniżej"
+                    }
+                }
             }
         },
         "header": {

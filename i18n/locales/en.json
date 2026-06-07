@@ -31,6 +31,14 @@
                 "empty_text": "No Results",
                 "clear_button_label": "Clear search",
                 "search_button_label": "Search"
+            },
+            "select": {
+                "Mobile": {
+                    "drawer": {
+                        "title": "Select Option",
+                        "description": "Click on one of the options below"
+                    }
+                }
             }
         },
         "header": {

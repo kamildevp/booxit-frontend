@@ -27,7 +27,7 @@ const forwardedProps = useForwardProps(delegatedProps)
     )"
   >
     <slot />
-    <SelectIcon as-child>
+    <SelectIcon v-if="!asChild" as-child>
       <ChevronDown :class="[
         selectIconVariants({ size }),
         'opacity-50'

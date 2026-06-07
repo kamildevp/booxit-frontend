@@ -16,7 +16,6 @@
         :value-key="valueKey"
         :entries="entries"
         :icon-key="iconKey"
-        :default-value="defaultValue"
         :placeholder="placeholder"
         :aria-invalid="!!errors.length"
         :model-value="field.value"
@@ -43,7 +42,7 @@
 >
 import type { BaseFieldProps } from '../types'
 import { Field as VeeField } from 'vee-validate'
-import type { Entry } from '~/components/app/Select.vue'
+import type { Entry } from '~/components/app/select/types'
 
 export interface Props<
   LabelKey extends string,
