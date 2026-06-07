@@ -4,12 +4,16 @@
     :items="filteredItems"
     :max-results="4"
     :placeholder="$t('components.organizations.SearchBar.placeholder')"
+    :loading="pending"
     :size="size"
     @apply="emit('apply', search)"
     @clear="emit('apply', undefined)"
   >
     <template #item="{ item }">
-      <NuxtLinkLocale :to="`/organizations/${item.id}`">
+      <NuxtLinkLocale
+        :to="`/organizations/${item.id}`"
+        tabindex="-1"
+      >
         <div class="flex gap-4 items-center">
           <NuxtImg
             :src="item.banner_url"
@@ -41,13 +45,13 @@
 import { useDebounceFn } from '@vueuse/core'
 import { useFilter } from 'reka-ui'
 import type { FiltersState } from '~~/types/list'
-import type { Variants as SearchBarVariants } from '../app/search-bar/variants'
+import type { SearchBarVariants } from '../app/search-bar/variants'
 
 const props = defineProps<{
   filtersState: FiltersState
-  size?: SearchBarVariants
+  size?: SearchBarVariants['size']
 }>()
-const { items, filtersState: searchFiltersState, pagesCount } = useStore(
+const { items, filtersState: searchFiltersState, pagesCount, pending } = useStore(
   '/api/organizations',
   1,
   50,

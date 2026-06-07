@@ -27,10 +27,11 @@
             "OptionsSeparator": {
                 "text": "LUB"
             },
-            "SearchBar": {
-                "empty_text": "Brak wyników",
-                "clear_button_label": "Wyczyść wyszukiwanie",
-                "search_button_label": "Szukaj"
+            "search_bar": {
+                "SearchBar": {
+                    "clear_button_label": "Wyczyść wyszukiwanie",
+                    "search_button_label": "Szukaj"
+                }
             },
             "select": {
                 "Mobile": {
