@@ -1,13 +1,13 @@
 <template>
   <AppSearchBar
     v-model="search"
-    :items="filteredItems"
+    :items
     :max-results="4"
     :placeholder="$t('components.organizations.SearchBar.placeholder')"
     :loading="pending"
     :size="size"
     @apply="emit('apply', search)"
-    @clear="emit('apply', undefined)"
+    @clear="emit('clear')"
   >
     <template #item="{ item }">
       <NuxtLinkLocale
@@ -38,12 +38,13 @@
         </div>
       </NuxtLinkLocale>
     </template>
+    <template #sideControl>
+      <slot name="sideControl" />
+    </template>
   </AppSearchBar>
 </template>
 
 <script setup lang="ts">
-import { useDebounceFn } from '@vueuse/core'
-import { useFilter } from 'reka-ui'
 import type { FiltersState } from '~~/types/list'
 import type { SearchBarVariants } from '../app/search-bar/variants'
 
@@ -51,68 +52,27 @@ const props = defineProps<{
   filtersState: FiltersState
   size?: SearchBarVariants['size']
 }>()
-const { items, filtersState: searchFiltersState, pagesCount, pending } = useStore(
-  '/api/organizations',
-  1,
-  50,
-  [...props.filtersState],
-  [],
-  true,
-  'organization-searchbar',
-)
 const emit = defineEmits<{
+  (e: 'clear'): void
   (e: 'apply', value?: string): void
 }>()
 
-const { contains } = useFilter({ sensitivity: 'base' })
-const search = ref(getNameFilterValue())
-const manualSearchPrefix = ref<string | undefined>(undefined)
-const filteredItems = computed(() => {
-  const searchVal = search.value
-  if (searchVal && manualSearchPrefix.value !== undefined && searchVal.startsWith(manualSearchPrefix.value)) {
-    return (items.value ?? []).filter(item => contains(item.name, searchVal))
-  }
-  else {
-    return items.value ?? []
-  }
-})
+const {
+  search,
+  items,
+  filtersState: searchFiltersState,
+  pending,
+} = useSearch(
+  '/api/organizations',
+  'name',
+  'filters[name]',
+  50,
+  [...props.filtersState],
+  [],
+  'organization-searchbar',
+)
 
 watch(() => props.filtersState, () => {
-  search.value = getNameFilterValue()
-  updateSearchFiltersState(search.value)
+  searchFiltersState.value = [...props.filtersState]
 })
-
-watch(pagesCount, (value) => {
-  if (value === undefined) {
-    return
-  }
-
-  if (value > 1) {
-    manualSearchPrefix.value = undefined
-  }
-  else {
-    manualSearchPrefix.value = search.value ?? ''
-  }
-}, { immediate: true })
-
-const updateSearch = useDebounceFn((value?: string) => {
-  if (value !== undefined && manualSearchPrefix.value !== undefined && value.startsWith(manualSearchPrefix.value)) {
-    return
-  }
-  else {
-    updateSearchFiltersState(value)
-  }
-}, 300)
-
-watch(search, updateSearch)
-
-function getNameFilterValue() {
-  return props.filtersState.find(el => el.id === 'filters[name]')?.value as string | undefined
-}
-
-function updateSearchFiltersState(value?: string) {
-  const newValue = [...props.filtersState].filter(el => el.id !== 'filters[name]')
-  newValue.push({ id: 'filters[name]', value: value })
-  searchFiltersState.value = newValue
-}
 </script>
